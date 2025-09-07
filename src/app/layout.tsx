@@ -5,9 +5,14 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Respir',
-  description: 'Application mobile-first avec Next.js 14 et shadcn/ui',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  title: 'Respir - Méditation et Bien-être',
+  description: 'Découvrez la méditation, la relaxation et le bien-être avec des programmes guidés adaptés à votre niveau et vos besoins.',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default function RootLayout({

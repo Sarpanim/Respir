@@ -133,7 +133,7 @@ export default function CourseDetailPage() {
     }
   }
 
-  const cours = coursData[courseId as keyof typeof coursData]
+  const cours = coursData[courseId as '1' | '2' | '3']
 
   if (!cours) {
     return (

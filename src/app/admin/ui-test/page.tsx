@@ -115,7 +115,7 @@ export default function UITestPage() {
               Test des Composants UI Responsive
             </CardTitle>
             <p className="text-muted-foreground">
-              Testez tous les composants shadcn/ui sur différentes tailles d'écran
+              Testez tous les composants shadcn/ui sur différentes tailles d&apos;écran
             </p>
           </CardHeader>
           <CardContent>

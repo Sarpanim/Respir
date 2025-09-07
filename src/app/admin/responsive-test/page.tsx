@@ -48,7 +48,7 @@ export default function ResponsiveTestPage() {
               Test Responsive Design
             </CardTitle>
             <p className="text-muted-foreground">
-              Vérifiez l'affichage sur mobile, tablette et desktop
+              Vérifiez l&apos;affichage sur mobile, tablette et desktop
             </p>
           </CardHeader>
           <CardContent>

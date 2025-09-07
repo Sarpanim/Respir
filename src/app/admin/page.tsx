@@ -20,7 +20,7 @@ export default function AdminPage() {
   const adminTools = [
     {
       title: 'Test Responsive Design',
-      description: 'Vérifiez l\'affichage sur mobile, tablette et desktop',
+      description: 'Vérifiez l&apos;affichage sur mobile, tablette et desktop',
       icon: Eye,
       href: '/admin/responsive-test',
       color: 'bg-blue-500',
@@ -206,7 +206,7 @@ export default function AdminPage() {
                   Test Responsive Design
                 </h3>
                 <p className="text-blue-700 mt-1">
-                  Vérifiez l'affichage parfait sur mobile, tablette et desktop avec notre outil de test intégré.
+                  Vérifiez l&apos;affichage parfait sur mobile, tablette et desktop avec notre outil de test intégré.
                 </p>
               </div>
               <div className="flex gap-2">
