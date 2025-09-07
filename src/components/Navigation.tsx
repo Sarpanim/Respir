@@ -20,6 +20,7 @@ export function Navigation() {
 
   const navigation = [
     { name: 'Accueil', href: '/', icon: Home },
+    { name: 'Méditations', href: '/meditations', icon: Heart },
     { name: 'Cours', href: '/courses', icon: BookOpen },
     { name: 'Profil', href: '/dashboard', icon: User },
   ]
