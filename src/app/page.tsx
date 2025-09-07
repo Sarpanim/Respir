@@ -33,6 +33,7 @@ import {
 } from "lucide-react"
 
 export default function Home() {
+  // Premium design with dark theme and gradients
   // Données de démonstration avec le nouveau format premium
   const featuredCourses = [
     {
