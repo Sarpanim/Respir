@@ -1,0 +1,73 @@
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+export default function Home() {
+  return (
+    <main className="container-mobile container-tablet container-desktop py-8">
+      <div className="space-y-8">
+        <div className="text-center space-y-4">
+          <h1 className="text-3xl font-bold tracking-tight text-mobile text-tablet text-desktop">
+            Bienvenue sur Respir
+          </h1>
+          <p className="text-muted-foreground text-mobile text-tablet text-desktop max-w-2xl mx-auto">
+            Une application moderne construite avec Next.js 14, Tailwind CSS et shadcn/ui, 
+            optimisée pour mobile-first.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <Card>
+            <CardHeader>
+              <CardTitle>Next.js 14</CardTitle>
+              <CardDescription>
+                App Router avec TypeScript
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Framework React moderne avec App Router pour des performances optimales.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Tailwind CSS</CardTitle>
+              <CardDescription>
+                Design mobile-first
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Framework CSS utilitaire pour un design responsive et moderne.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>shadcn/ui</CardTitle>
+              <CardDescription>
+                Composants accessibles
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Bibliothèque de composants UI réutilisables et accessibles.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" className="w-full sm:w-auto">
+            Commencer
+          </Button>
+          <Button variant="outline" size="lg" className="w-full sm:w-auto">
+            En savoir plus
+          </Button>
+        </div>
+      </div>
+    </main>
+  )
+}

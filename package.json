@@ -1,0 +1,46 @@
+{
+  "name": "respir",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sarpanim/Respir.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Sarpanim/Respir/issues"
+  },
+  "homepage": "https://github.com/Sarpanim/Respir#readme",
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "@types/node": "^24.3.1",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.542.0",
+    "next": "^15.5.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "^15.5.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13"
+  }
+}
