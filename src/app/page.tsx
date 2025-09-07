@@ -81,6 +81,9 @@ export default function Home() {
           <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
             <Link href="/dashboard">Tableau de bord</Link>
           </Button>
+          <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
+            <Link href="/courses">Voir les cours</Link>
+          </Button>
         </div>
       </div>
     </main>
