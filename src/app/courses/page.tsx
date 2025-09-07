@@ -1,474 +1,361 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Navigation } from "@/components/Navigation"
-import { UserGreeting } from "@/components/user/UserGreeting"
-import { PremiumCourseCard } from "@/components/courses/PremiumCourseCard"
-import { PremiumTagFilter } from "@/components/filters/PremiumTagFilter"
-import Link from "next/link"
-import Image from "next/image"
+import { useState } from 'react'
 import { 
   Search, 
-  Plus, 
-  Filter, 
-  BookOpen, 
-  Clock, 
-  Users, 
+  Heart, 
+  Menu, 
+  Bell, 
+  Settings,
+  Play,
+  Clock,
   Star,
-  ArrowRight,
-  Grid3X3,
+  Users,
+  Filter,
+  Grid,
   List,
   SortAsc,
-  Sparkles,
-  Flame,
-  Heart,
+  Moon,
+  Wind,
+  Target,
+  Leaf,
   Zap,
-  Target
-} from "lucide-react"
-import { useState } from "react"
+  Home
+} from 'lucide-react'
 
-export default function Courses() {
+// Import des composants premium
+import PremiumCourseCard from '@/components/courses/PremiumCourseCard'
+import PremiumFilterTabs from '@/components/filters/PremiumFilterTabs'
+import PremiumSearchBar from '@/components/search/PremiumSearchBar'
+import PremiumTopNavigation from '@/components/navigation/PremiumTopNavigation'
+import PremiumBottomNavigation from '@/components/navigation/PremiumBottomNavigation'
+
+export default function CoursesPage() {
+  const [activeTab, setActiveTab] = useState('home')
+  const [activeFilter, setActiveFilter] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [sortBy, setSortBy] = useState<'popular' | 'newest' | 'duration'>('popular')
 
-  // Données de démonstration avec le nouveau format premium
+  // Données des cours premium
   const courses = [
     {
-      id: "1",
-      title: "Méditation de pleine conscience",
-      subtitle: "Découvrez les bases de la méditation",
-      description: "Une introduction complète à la méditation de pleine conscience pour débuter votre pratique en douceur et développer votre conscience du moment présent",
-      duration_lessons: 10,
-      duration_minutes: 120,
-      price: 0,
-      is_free: true,
-      is_premium: false,
-      image_url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+      id: 1,
+      title: "Méditation du Matin",
+      subtitle: "Commencez votre journée en douceur",
+      image: "https://images.unsplash.com/photo-1506905925346-04b1e114101c?w=400&h=300&fit=crop&crop=center",
+      duration: "10 min",
+      level: "débutant" as const,
       rating: 4.8,
-      total_ratings: 1247,
-      total_students: 15600,
-      level: "debutant" as const,
-      instructor: {
-        name: "Sarah Johnson",
-        avatar_url: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-      },
-      category: {
-        name: "Pleine Conscience",
-        color: "#06B6D4"
-      },
-      tags: [
-        { name: "Débutant", color: "#10B981" },
-        { name: "Concentration", color: "#8B5CF6" },
-        { name: "Détente", color: "#10B981" }
-      ]
+      students: 1250,
+      isPremium: false,
+      category: "Méditation",
+      tags: ["matin", "débutant", "relaxation"]
     },
     {
-      id: "2",
-      title: "Gestion du stress et de l'anxiété",
-      subtitle: "Techniques avancées pour retrouver la sérénité",
-      description: "Apprenez des méthodes éprouvées pour gérer le stress quotidien et réduire l'anxiété avec des techniques de méditation spécialisées",
-      duration_lessons: 12,
-      duration_minutes: 180,
-      price: 29.99,
-      is_free: false,
-      is_premium: true,
-      image_url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
+      id: 2,
+      title: "Gestion du Stress",
+      subtitle: "Techniques avancées de relaxation",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      duration: "25 min",
+      level: "intermédiaire" as const,
       rating: 4.9,
-      total_ratings: 892,
-      total_students: 12300,
-      level: "intermediaire" as const,
-      instructor: {
-        name: "Michael Chen",
-        avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-      },
-      category: {
-        name: "Stress & Anxiété",
-        color: "#F59E0B"
-      },
-      tags: [
-        { name: "Stress", color: "#EF4444" },
-        { name: "Anxiété", color: "#F59E0B" },
-        { name: "Détente", color: "#10B981" }
-      ]
+      students: 890,
+      isPremium: true,
+      category: "Stress",
+      tags: ["stress", "relaxation", "avancé"]
     },
     {
-      id: "3",
-      title: "Méditation pour le sommeil",
-      subtitle: "Améliorez la qualité de votre repos",
-      description: "Des techniques spécialement conçues pour vous aider à vous endormir plus facilement et améliorer la qualité de votre sommeil",
-      duration_lessons: 8,
-      duration_minutes: 150,
-      price: 24.99,
-      is_free: false,
-      is_premium: true,
-      image_url: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop",
+      id: 3,
+      title: "Sommeil Profond",
+      subtitle: "Méditations pour un repos réparateur",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center",
+      duration: "30 min",
+      level: "débutant" as const,
       rating: 4.7,
-      total_ratings: 634,
-      total_students: 8900,
-      level: "intermediaire" as const,
-      instructor: {
-        name: "Emma Wilson",
-        avatar_url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-      },
-      category: {
-        name: "Sommeil",
-        color: "#3B82F6"
-      },
-      tags: [
-        { name: "Sommeil", color: "#3B82F6" },
-        { name: "Détente", color: "#10B981" },
-        { name: "Respiration", color: "#06B6D4" }
-      ]
+      students: 2100,
+      isPremium: false,
+      category: "Sommeil",
+      tags: ["sommeil", "nuit", "repos"]
     },
     {
-      id: "4",
-      title: "Respiration profonde",
-      subtitle: "Techniques de relaxation",
-      description: "Maîtrisez les techniques de respiration pour la relaxation et la gestion de l'anxiété avec des exercices pratiques",
-      duration_lessons: 6,
-      duration_minutes: 90,
-      price: 0,
-      is_free: true,
-      is_premium: false,
-      image_url: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
+      id: 4,
+      title: "Méditation Guidée",
+      subtitle: "Séances courtes et efficaces",
+      image: "https://images.unsplash.com/photo-1506905925346-04b1e114101c?w=400&h=300&fit=crop&crop=center",
+      duration: "5 min",
+      level: "débutant" as const,
       rating: 4.6,
-      total_ratings: 456,
-      total_students: 5600,
-      level: "debutant" as const,
-      instructor: {
-        name: "David Lee",
-        avatar_url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-      },
-      category: {
-        name: "Respiration",
-        color: "#10B981"
-      },
-      tags: [
-        { name: "Respiration", color: "#10B981" },
-        { name: "Débutant", color: "#10B981" }
-      ]
+      students: 3200,
+      isPremium: false,
+      category: "Méditation",
+      tags: ["guidée", "court", "débutant"]
     },
     {
-      id: "5",
-      title: "Méditation transcendantale",
-      subtitle: "Explorez les profondeurs",
-      description: "Une formation avancée sur la méditation transcendantale pour les pratiquants expérimentés souhaitant approfondir leur pratique",
-      duration_lessons: 15,
-      duration_minutes: 300,
-      price: 49.99,
-      is_free: false,
-      is_premium: true,
-      image_url: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop",
-      rating: 4.9,
-      total_ratings: 234,
-      total_students: 3200,
-      level: "avance" as const,
-      instructor: {
-        name: "James Taylor",
-        avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-      },
-      category: {
-        name: "Avancé",
-        color: "#8B5CF6"
-      },
-      tags: [
-        { name: "Avancé", color: "#EF4444" },
-        { name: "Concentration", color: "#8B5CF6" }
-      ]
-    },
-    {
-      id: "6",
-      title: "Méditation de gratitude",
-      subtitle: "Cultivez la positivité",
-      description: "Apprenez à cultiver la gratitude et la positivité dans votre vie quotidienne grâce à la méditation",
-      duration_lessons: 7,
-      duration_minutes: 105,
-      price: 19.99,
-      is_free: false,
-      is_premium: true,
-      image_url: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
+      id: 5,
+      title: "Respiration Consciente",
+      subtitle: "Maîtrisez votre souffle",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      duration: "15 min",
+      level: "intermédiaire" as const,
       rating: 4.8,
-      total_ratings: 567,
-      total_students: 7800,
-      level: "intermediaire" as const,
-      instructor: {
-        name: "Lisa Martinez",
-        avatar_url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
-      },
-      category: {
-        name: "Relations",
-        color: "#EC4899"
-      },
-      tags: [
-        { name: "Gratitude", color: "#F59E0B" },
-        { name: "Positivité", color: "#10B981" }
-      ]
+      students: 1800,
+      isPremium: false,
+      category: "Respiration",
+      tags: ["respiration", "concentration", "technique"]
+    },
+    {
+      id: 6,
+      title: "Méditation Avancée",
+      subtitle: "Techniques approfondies",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center",
+      duration: "45 min",
+      level: "avancé" as const,
+      rating: 4.9,
+      students: 650,
+      isPremium: true,
+      category: "Méditation",
+      tags: ["avancé", "technique", "approfondi"]
+    },
+    {
+      id: 7,
+      title: "Anxiété et Panique",
+      subtitle: "Gérer les crises d'angoisse",
+      image: "https://images.unsplash.com/photo-1506905925346-04b1e114101c?w=400&h=300&fit=crop&crop=center",
+      duration: "20 min",
+      level: "intermédiaire" as const,
+      rating: 4.7,
+      students: 1450,
+      isPremium: true,
+      category: "Anxiété",
+      tags: ["anxiété", "panique", "gestion"]
+    },
+    {
+      id: 8,
+      title: "Concentration et Focus",
+      subtitle: "Améliorez votre attention",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      duration: "12 min",
+      level: "débutant" as const,
+      rating: 4.5,
+      students: 2200,
+      isPremium: false,
+      category: "Concentration",
+      tags: ["concentration", "focus", "attention"]
     }
   ]
 
-  const categories = [
-    { name: "Toutes les catégories", value: "all" },
-    { name: "Débutant", value: "debutant" },
-    { name: "Stress & Anxiété", value: "stress-anxiete" },
-    { name: "Pleine Conscience", value: "pleine-conscience" },
-    { name: "Respiration", value: "respiration" },
-    { name: "Sommeil", value: "sommeil" },
-    { name: "Relations", value: "relations" }
+  // Filtres par catégorie
+  const filterTabs = [
+    { id: 'all', label: 'Tous', count: courses.length },
+    { id: 'meditation', label: 'Méditation', count: courses.filter(c => c.category === 'Méditation').length },
+    { id: 'stress', label: 'Stress', count: courses.filter(c => c.category === 'Stress').length },
+    { id: 'sleep', label: 'Sommeil', count: courses.filter(c => c.category === 'Sommeil').length },
+    { id: 'anxiety', label: 'Anxiété', count: courses.filter(c => c.category === 'Anxiété').length },
+    { id: 'concentration', label: 'Concentration', count: courses.filter(c => c.category === 'Concentration').length }
   ]
 
-  const levels = [
-    { name: "Tous les niveaux", value: "all" },
-    { name: "Débutant", value: "debutant" },
-    { name: "Intermédiaire", value: "intermediaire" },
-    { name: "Avancé", value: "avance" }
-  ]
+  // Filtrer les cours
+  const filteredCourses = courses.filter(course => {
+    const matchesFilter = activeFilter === 'all' || course.category.toLowerCase() === activeFilter
+    const matchesSearch = searchQuery === '' || 
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    
+    return matchesFilter && matchesSearch
+  })
 
-  const popularTags = [
-    { id: "debutant", name: "Débutant", color: "#10B981", bgColor: "#ECFDF5", borderColor: "#10B98140", icon: "sparkles", count: 24, isPopular: true },
-    { id: "concentration", name: "Concentration", color: "#8B5CF6", bgColor: "#F3F4F6", borderColor: "#8B5CF640", icon: "star", count: 18, isPopular: true },
-    { id: "detente", name: "Détente", color: "#10B981", bgColor: "#ECFDF5", borderColor: "#10B98140", icon: "heart", count: 32, isPopular: true },
-    { id: "stress", name: "Stress", color: "#EF4444", bgColor: "#FEF2F2", borderColor: "#EF444440", icon: "zap", count: 15, isPopular: true },
-    { id: "sommeil", name: "Sommeil", color: "#3B82F6", bgColor: "#EFF6FF", borderColor: "#3B82F640", icon: "clock", count: 12, isPopular: false },
-    { id: "respiration", name: "Respiration", color: "#06B6D4", bgColor: "#ECFEFF", borderColor: "#06B6D440", icon: "heart", count: 9, isPopular: false },
-    { id: "gratuit", name: "Gratuit", color: "#059669", bgColor: "#ECFDF5", borderColor: "#05966940", icon: "star", count: 28, isPopular: true },
-    { id: "premium", name: "Premium", color: "#7C3AED", bgColor: "#F3F4F6", borderColor: "#7C3AED40", icon: "sparkles", count: 16, isPopular: false }
-  ]
-
-  const handleTagSelect = (tagId: string) => {
-    setSelectedTags(prev => 
-      prev.includes(tagId) 
-        ? prev.filter(id => id !== tagId)
-        : [...prev, tagId]
-    )
-  }
-
-  const handleClearAll = () => {
-    setSelectedTags([])
-  }
+  // Trier les cours
+  const sortedCourses = [...filteredCourses].sort((a, b) => {
+    switch (sortBy) {
+      case 'popular':
+        return b.students - a.students
+      case 'newest':
+        return b.id - a.id
+      case 'duration':
+        return parseInt(a.duration) - parseInt(b.duration)
+      default:
+        return 0
+    }
+  })
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <Navigation />
-      <main>
-        {/* User Greeting Section */}
-        <section className="py-6">
-          <div className="container-mobile container-tablet container-desktop">
-            <UserGreeting variant="minimal" showStats={false} />
-          </div>
-        </section>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+      {/* Navigation Top Premium */}
+      <PremiumTopNavigation 
+        title="Cours"
+        showPremium={true}
+        showSearch={true}
+        showFavorites={true}
+        showMenu={true}
+        showNotifications={true}
+        showSettings={true}
+      />
 
-        {/* Header */}
-        <section className="py-4">
-          <div className="container-mobile container-tablet container-desktop">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-3xl font-bold text-slate-900">Catalogue des Cours</h1>
-                  <p className="text-slate-600 mt-1">{courses.length} cours disponibles</p>
-                </div>
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg">
-                  <Plus className="h-4 w-4 mr-2" />
-                  Créer un cours
-                </Button>
-        </div>
+      <main className="pt-16">
+        {/* Hero Section */}
+        <section className="py-8">
+          <div className="container-mobile px-4">
+            <div className="text-center mb-8">
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Découvrez nos cours
+              </h1>
+              <p className="text-lg text-white/80 mb-6">
+                Des programmes adaptés à votre niveau et vos besoins
+              </p>
+            </div>
 
-              {/* Search and Filters */}
-        <div className="space-y-4">
-                {/* Search Bar */}
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
-                  <Input 
-                    placeholder="Rechercher un cours, un instructeur, un tag..." 
-                    className="pl-12 pr-4 py-4 border-slate-300 focus:border-slate-400 rounded-xl text-lg"
+            {/* Search Bar */}
+            <div className="mb-6">
+              <PremiumSearchBar
+                placeholder="Rechercher des cours..."
+                value={searchQuery}
+                onChange={setSearchQuery}
               />
             </div>
 
-                {/* Filters Row */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Select>
-                    <SelectTrigger className="w-full sm:w-48 border-slate-300 rounded-xl">
-                      <SelectValue placeholder="Toutes les catégories" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.map((category) => (
-                        <SelectItem key={category.value} value={category.value}>
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-
-                  <Select>
-                    <SelectTrigger className="w-full sm:w-48 border-slate-300 rounded-xl">
-                      <SelectValue placeholder="Tous les niveaux" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {levels.map((level) => (
-                        <SelectItem key={level.value} value={level.value}>
-                          {level.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-
-                  <Button variant="outline" className="border-slate-300 hover:border-slate-400 rounded-xl">
-                    <Filter className="h-4 w-4 mr-2" />
-                    Filtres
-                  </Button>
-
-                  <div className="flex gap-2 ml-auto">
-                    <Button 
-                      variant={viewMode === 'grid' ? 'default' : 'outline'} 
-                      size="sm" 
-                      onClick={() => setViewMode('grid')}
-                      className="rounded-xl"
-                    >
-                      <Grid3X3 className="h-4 w-4" />
-                    </Button>
-                    <Button 
-                      variant={viewMode === 'list' ? 'default' : 'outline'} 
-                      size="sm" 
-                      onClick={() => setViewMode('list')}
-                      className="rounded-xl"
-                    >
-                      <List className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Popular Tags Filter */}
-                <PremiumTagFilter 
-                  tags={popularTags}
-                  selectedTags={selectedTags}
-                  onTagSelect={handleTagSelect}
-                  onClearAll={handleClearAll}
-                  variant="default"
-                  showCounts={true}
-                  showIcons={true}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Hero Image Section */}
-        <section className="py-6">
-          <div className="container-mobile container-tablet container-desktop">
-            <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
-              <Image 
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop" 
-                alt="Montagnes et nuages"
-                fill
-                className="object-cover"
+            {/* Filter Tabs */}
+            <div className="mb-6">
+              <PremiumFilterTabs
+                tabs={filterTabs}
+                activeTab={activeFilter}
+                onTabChange={setActiveFilter}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <h2 className="text-3xl font-bold mb-2">Trouvez votre paix intérieure</h2>
-                <p className="text-lg opacity-90">Découvrez nos cours de méditation guidée</p>
-              </div>
-              </div>
-        </div>
-        </section>
+            </div>
 
-        {/* Stats Cards */}
-        <section className="py-6">
-          <div className="container-mobile container-tablet container-desktop">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Card className="p-4 border-0 bg-white/80 backdrop-blur-sm">
-                <CardContent className="p-0">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-blue-100 rounded-xl">
-                      <BookOpen className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="text-2xl font-bold text-slate-900">{courses.length}</p>
-                      <p className="text-sm text-slate-600">Cours disponibles</p>
+            {/* Controls */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 rounded-lg transition-all duration-200 ${
+                    viewMode === 'grid' 
+                      ? 'bg-white/20 text-white' 
+                      : 'bg-white/10 text-white/60 hover:bg-white/15'
+                  }`}
+                >
+                  <Grid className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`p-2 rounded-lg transition-all duration-200 ${
+                    viewMode === 'list' 
+                      ? 'bg-white/20 text-white' 
+                      : 'bg-white/10 text-white/60 hover:bg-white/15'
+                  }`}
+                >
+                  <List className="w-5 h-5" />
+                </button>
               </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="p-4 border-0 bg-white/80 backdrop-blur-sm">
-                <CardContent className="p-0">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-green-100 rounded-xl">
-                      <Clock className="h-5 w-5 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="text-2xl font-bold text-slate-900">
-                        {Math.round(courses.reduce((acc, course) => acc + course.duration_minutes, 0) / 60)}h
-                      </p>
-                      <p className="text-sm text-slate-600">Contenu total</p>
-                </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="p-4 border-0 bg-white/80 backdrop-blur-sm">
-                <CardContent className="p-0">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-purple-100 rounded-xl">
-                      <Users className="h-5 w-5 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="text-2xl font-bold text-slate-900">
-                        {courses.reduce((acc, course) => acc + course.total_students, 0).toLocaleString()}
-                      </p>
-                      <p className="text-sm text-slate-600">Étudiants inscrits</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="p-4 border-0 bg-white/80 backdrop-blur-sm">
-                <CardContent className="p-0">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-yellow-100 rounded-xl">
-                      <Star className="h-5 w-5 text-yellow-600" />
-                </div>
-                    <div>
-                      <p className="text-2xl font-bold text-slate-900">
-                        {(courses.reduce((acc, course) => acc + course.rating, 0) / courses.length).toFixed(1)}
-                      </p>
-                      <p className="text-sm text-slate-600">Note moyenne</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+
+              <div className="flex items-center space-x-2">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as 'popular' | 'newest' | 'duration')}
+                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="popular" className="bg-slate-800">Populaire</option>
+                  <option value="newest" className="bg-slate-800">Plus récent</option>
+                  <option value="duration" className="bg-slate-800">Durée</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Results Count */}
+            <div className="mb-6">
+              <p className="text-white/60 text-sm">
+                {sortedCourses.length} cours trouvés
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Courses Grid/List */}
-        <section className="py-6">
-          <div className="container-mobile container-tablet container-desktop">
+        {/* Courses Grid */}
+        <section className="py-8">
+          <div className="container-mobile px-4">
             {viewMode === 'grid' ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {courses.map((course) => (
-                  <PremiumCourseCard key={course.id} course={course} variant="default" />
+                {sortedCourses.map((course) => (
+                  <PremiumCourseCard
+                    key={course.id}
+                    id={course.id}
+                    title={course.title}
+                    subtitle={course.subtitle}
+                    image={course.image}
+                    duration={course.duration}
+                    level={course.level}
+                    rating={course.rating}
+                    students={course.students}
+                    isPremium={course.isPremium}
+                    category={course.category}
+                    variant="default"
+                  />
                 ))}
               </div>
             ) : (
               <div className="space-y-4">
-                {courses.map((course) => (
-                  <PremiumCourseCard key={course.id} course={course} variant="compact" />
-          ))}
-        </div>
+                {sortedCourses.map((course) => (
+                  <PremiumCourseCard
+                    key={course.id}
+                    id={course.id}
+                    title={course.title}
+                    subtitle={course.subtitle}
+                    image={course.image}
+                    duration={course.duration}
+                    level={course.level}
+                    rating={course.rating}
+                    students={course.students}
+                    isPremium={course.isPremium}
+                    category={course.category}
+                    variant="featured"
+                  />
+                ))}
+              </div>
             )}
 
-            {/* Load More */}
-            <div className="text-center mt-8">
-              <Button variant="outline" size="lg" className="border-slate-300 hover:border-slate-400 rounded-xl px-8">
-                Charger plus de cours
-              </Button>
-            </div>
+            {/* Empty State */}
+            {sortedCourses.length === 0 && (
+              <div className="text-center py-12">
+                <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-12 h-12 text-white/40" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Aucun cours trouvé
+                </h3>
+                <p className="text-white/60 mb-6">
+                  Essayez de modifier vos filtres ou votre recherche
+                </p>
+                <button
+                  onClick={() => {
+                    setSearchQuery('')
+                    setActiveFilter('all')
+                  }}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200"
+                >
+                  Réinitialiser les filtres
+                </button>
+              </div>
+            )}
           </div>
         </section>
+
+        {/* Bottom Spacing for Navigation */}
+        <div className="h-20"></div>
       </main>
+
+      {/* Bottom Navigation Premium */}
+      <PremiumBottomNavigation
+        tabs={[
+          { id: 'home', label: 'Accueil', icon: Home },
+          { id: 'meditate', label: 'Méditer', icon: Play },
+          { id: 'explore', label: 'Explorer', icon: Search, active: true },
+          { id: 'profile', label: 'Profil', icon: Users },
+          { id: 'stats', label: 'Stats', icon: Target }
+        ]}
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+      />
     </div>
   )
 }

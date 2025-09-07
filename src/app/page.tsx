@@ -156,8 +156,8 @@ export default function HomePage() {
               <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
                 <Star className="w-4 h-4 text-yellow-400" />
                 <span className="text-white text-sm">Prochaine : Méditation du matin</span>
-              </div>
-            </div>
+                      </div>
+                    </div>
 
             {/* Stats Grid Premium */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -193,7 +193,7 @@ export default function HomePage() {
                 trend="up"
                 trendValue="+3"
               />
-            </div>
+                  </div>
 
             {/* Quick Actions */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -203,28 +203,28 @@ export default function HomePage() {
                   <div>
                     <h3 className="text-lg font-semibold text-white">Méditation rapide</h3>
                     <p className="text-sm text-white/70">Séances de 5-15 minutes</p>
-                  </div>
-                </div>
+            </div>
+          </div>
                 <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-xl font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200">
                   Commencer
                 </button>
-              </div>
-              
+            </div>
+            
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <BookOpen className="w-8 h-8 text-green-400" />
                   <div>
                     <h3 className="text-lg font-semibold text-white">Cours guidés</h3>
                     <p className="text-sm text-white/70">Programmes complets</p>
-                  </div>
-                </div>
+                      </div>
+                    </div>
                 <button className="w-full bg-gradient-to-r from-green-500 to-teal-600 text-white py-3 rounded-xl font-medium hover:from-green-600 hover:to-teal-700 transition-all duration-200">
                   Explorer
                 </button>
-              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Categories Section */}
         <section className="py-8">
@@ -246,9 +246,9 @@ export default function HomePage() {
                   isPopular={category.id === 'meditation' || category.id === 'stress'}
                 />
               ))}
-            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Featured Courses */}
         <section className="py-8">
@@ -275,9 +275,9 @@ export default function HomePage() {
                   variant="featured"
                 />
               ))}
-            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Popular Courses */}
         <section className="py-8">
@@ -304,9 +304,9 @@ export default function HomePage() {
                   variant="default"
                 />
               ))}
-            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Bottom Spacing for Navigation */}
         <div className="h-20"></div>
