@@ -21,15 +21,26 @@ export function useCourses() {
   const fetchCours = async () => {
     try {
       setLoading(true)
+      
+      // Vérifier la configuration Supabase
+      console.log('Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL)
+      console.log('Supabase Key exists:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+      
       const { data, error } = await supabase
         .from('cours_complets')
         .select('*')
         .eq('is_active', true)
         .order('ordre')
 
-      if (error) throw error
+      if (error) {
+        console.error('Erreur Supabase:', error)
+        throw error
+      }
+      
+      console.log('Cours chargés:', data?.length || 0)
       setCours(data || [])
     } catch (err) {
+      console.error('Erreur fetchCours:', err)
       setError(err instanceof Error ? err.message : 'Erreur lors du chargement des cours')
     } finally {
       setLoading(false)

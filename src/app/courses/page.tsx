@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Loader2, Search, Filter, Plus, Clock, Users, Star, Play } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { SupabaseTest } from '@/components/SupabaseTest'
 
 export default function CoursesPage() {
   const { 
@@ -103,10 +104,11 @@ export default function CoursesPage() {
             </CardTitle>
             <CardDescription>{error}</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-4">
             <Button onClick={() => window.location.reload()} variant="outline">
               Réessayer
             </Button>
+            <SupabaseTest />
           </CardContent>
         </Card>
       </div>
