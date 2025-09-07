@@ -53,7 +53,7 @@ export function useCourse(courseId: string) {
   }, [courseId, supabase])
 
   // Grouper le contenu par section
-  const contenuBySection = contenu.reduce((acc, item) => {
+  const contenuBySection = contenu.reduce((acc: any, item) => {
     const sectionId = item.section_id || 'direct'
     if (!acc[sectionId]) {
       acc[sectionId] = {
@@ -101,11 +101,11 @@ export function useCourse(courseId: string) {
   // Statistiques du cours
   const stats = {
     totalSections: Object.keys(contenuBySection).length,
-    totalChapitres: Object.values(contenuBySection).reduce((acc, section: any) => 
+    totalChapitres: Object.values(contenuBySection).reduce((acc: number, section: any) => 
       acc + Object.keys(section.chapitres || {}).length, 0),
     totalContenus: contenu.length,
     dureeEstimee: cours?.duree || 0,
-    typesContenus: contenu.reduce((acc, item) => {
+    typesContenus: contenu.reduce((acc: Record<string, number>, item) => {
       acc[item.contenu_type] = (acc[item.contenu_type] || 0) + 1
       return acc
     }, {} as Record<string, number>)

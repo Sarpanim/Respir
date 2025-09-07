@@ -16,7 +16,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Sarpanim/Respir/issues"
   },
@@ -39,6 +39,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.35.0",
     "eslint-config-next": "^15.5.2",

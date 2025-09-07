@@ -45,7 +45,13 @@ export default function CoursesPage() {
       prix: 29.99,
       categorie_id: categories[0].id,
       is_active: true,
-      ordre: cours.length + 1
+      ordre: cours.length + 1,
+      progression: 0,
+      image_url: null,
+      video_url: null,
+      audio_url: null,
+      sous_categorie_id: null,
+      formule_id: null
     }
 
     const { error } = await createCours(sampleCours)
@@ -191,7 +197,7 @@ export default function CoursesPage() {
                 {cours.image_url ? (
                   <img 
                     src={cours.image_url} 
-                    alt={cours.titre}
+                    alt={cours.titre || 'Image du cours'}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -369,7 +375,7 @@ export default function CoursesPage() {
             <CardContent className="pt-6">
               <div className="flex items-center space-x-2">
                 <div className="text-2xl font-bold">
-                  {cours.reduce((acc, c) => acc + c.duree, 0)}
+                  {cours.reduce((acc: number, c) => acc + c.duree, 0)}
                 </div>
                 <div className="text-xs text-muted-foreground">Minutes totales</div>
               </div>

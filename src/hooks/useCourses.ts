@@ -197,7 +197,7 @@ export function useCourses() {
     }
 
     loadData()
-  }, [])
+  }, [supabase])
 
   return {
     cours,

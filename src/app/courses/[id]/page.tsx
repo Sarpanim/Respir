@@ -101,7 +101,7 @@ export default function CourseDetailPage() {
   }
 
   // Grouper le contenu par section
-  const contenuBySection = contenu.reduce((acc, item) => {
+  const contenuBySection = contenu.reduce((acc: any, item) => {
     const sectionId = item.section_id || 'direct'
     if (!acc[sectionId]) {
       acc[sectionId] = {
@@ -204,7 +204,7 @@ export default function CourseDetailPage() {
                 {cours.image_url ? (
                   <img 
                     src={cours.image_url} 
-                    alt={cours.titre}
+                    alt={cours.titre || 'Image du cours'}
                     className="w-full h-full object-cover rounded-lg"
                   />
                 ) : (
