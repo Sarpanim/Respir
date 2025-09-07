@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader>
               <CardTitle>Next.js 14</CardTitle>
@@ -57,14 +58,28 @@ export default function Home() {
               </p>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Supabase</CardTitle>
+              <CardDescription>
+                Backend-as-a-Service
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Authentification, base de données et stockage intégrés.
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="w-full sm:w-auto">
-            Commencer
+          <Button size="lg" className="w-full sm:w-auto" asChild>
+            <Link href="/login">Se connecter</Link>
           </Button>
-          <Button variant="outline" size="lg" className="w-full sm:w-auto">
-            En savoir plus
+          <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
+            <Link href="/dashboard">Tableau de bord</Link>
           </Button>
         </div>
       </div>

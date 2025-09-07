@@ -8,6 +8,7 @@ Une application moderne construite avec Next.js 14, Tailwind CSS et shadcn/ui, o
 - **TypeScript** - Typage statique pour JavaScript
 - **Tailwind CSS** - Framework CSS utilitaire
 - **shadcn/ui** - Composants UI accessibles et réutilisables
+- **Supabase** - Backend-as-a-Service (Auth, Database, Storage)
 - **ESLint** - Linter pour maintenir la qualité du code
 
 ## 📱 Design Mobile-First
@@ -51,13 +52,26 @@ npm run dev
 ```
 src/
 ├── app/                 # App Router (Next.js 14)
+│   ├── auth/           # Pages d'authentification
+│   │   └── callback/   # Callback OAuth
+│   ├── dashboard/      # Page tableau de bord
+│   ├── login/          # Page de connexion
 │   ├── globals.css     # Styles globaux et variables CSS
 │   ├── layout.tsx      # Layout racine
 │   └── page.tsx        # Page d'accueil
 ├── components/         # Composants React
+│   ├── auth/          # Composants d'authentification
 │   └── ui/            # Composants shadcn/ui
-└── lib/               # Utilitaires et helpers
-    └── utils.ts       # Fonctions utilitaires
+├── hooks/             # Hooks personnalisés
+│   └── useAuth.ts     # Hook d'authentification
+├── lib/               # Utilitaires et helpers
+│   ├── supabase/      # Configuration Supabase
+│   │   ├── client.ts  # Client navigateur
+│   │   ├── server.ts  # Client serveur
+│   │   └── middleware.ts # Middleware auth
+│   └── utils.ts       # Fonctions utilitaires
+└── types/             # Types TypeScript
+    └── database.ts    # Types de la base de données
 ```
 
 ## 🎯 Fonctionnalités
@@ -69,11 +83,40 @@ src/
 - ✅ TypeScript configuré
 - ✅ ESLint configuré
 - ✅ Structure de projet organisée
+- ✅ **Supabase intégré** avec authentification complète
+- ✅ **Authentification** : Email/Password + OAuth Google
+- ✅ **Base de données** : Types TypeScript + requêtes
+- ✅ **Middleware** : Protection des routes
+- ✅ **Hooks personnalisés** : useAuth pour la gestion d'état
+
+## 🔐 Configuration Supabase
+
+### Variables d'environnement
+Le fichier `.env.local` contient les clés Supabase :
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://lshtqwprrksogjvxfqek.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+### Fonctionnalités intégrées
+- **Authentification** : Email/Password + OAuth Google
+- **Base de données** : Tables `profiles` et `posts` avec types TypeScript
+- **Middleware** : Protection automatique des routes
+- **Hooks** : `useAuth()` pour la gestion d'état utilisateur
+- **Composants** : `AuthForm`, `UserProfile` prêts à l'emploi
+
+### Pages disponibles
+- `/` - Page d'accueil
+- `/login` - Connexion/Inscription
+- `/dashboard` - Tableau de bord (protégé)
+- `/auth/callback` - Callback OAuth
 
 ## 📝 Prochaines étapes
 
+- Configurer les tables Supabase dans le dashboard
 - Ajouter plus de composants shadcn/ui selon les besoins
 - Configurer le thème sombre/clair
 - Ajouter des animations et transitions
 - Intégrer des tests (Jest, Testing Library)
 - Configurer le déploiement (Vercel, Netlify, etc.)
+- Ajouter le stockage de fichiers avec Supabase Storage
