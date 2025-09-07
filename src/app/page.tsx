@@ -26,7 +26,10 @@ import {
   Flame,
   Zap,
   BookOpen,
-  Headphones
+  Headphones,
+  ChevronRight,
+  CheckCircle,
+  Crown
 } from "lucide-react"
 
 export default function Home() {
@@ -186,32 +189,32 @@ export default function Home() {
   const categories = [
     {
       name: "Apprendre à méditer",
-                  description: "Découvrez les bases de la méditation",
-                  image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+      description: "Découvrez les bases de la méditation",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
       color: "#10B981",
       count: 12,
       icon: "sparkles"
-                },
-                {
+    },
+    {
       name: "Gérer l'anxiété",
-                  description: "Techniques pour calmer l'esprit",
-                  image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
+      description: "Techniques pour calmer l'esprit",
+      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
       color: "#F59E0B",
       count: 8,
       icon: "heart"
-                },
-                {
+    },
+    {
       name: "Réduire le stress",
-                  description: "Méthodes de relaxation efficaces",
-                  image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
+      description: "Méthodes de relaxation efficaces",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
       color: "#EF4444",
       count: 15,
       icon: "zap"
-                },
-                {
+    },
+    {
       name: "Améliorer le sommeil",
-                  description: "Routines pour un repos réparateur",
-                  image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop",
+      description: "Routines pour un repos réparateur",
+      image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop",
       color: "#3B82F6",
       count: 6,
       icon: "clock"
@@ -230,46 +233,161 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
       <Navigation />
       <main>
+        {/* Hero Section Premium */}
+        <section className="relative py-20 overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20"></div>
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+          </div>
+          
+          <div className="container-mobile container-tablet container-desktop relative z-10">
+            <div className="text-center space-y-8">
+              {/* Badge Premium */}
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 backdrop-blur-sm border border-yellow-400/30 rounded-full px-6 py-3">
+                <Crown className="h-5 w-5 text-yellow-400" />
+                <span className="text-yellow-100 font-semibold">Application Premium</span>
+                <Sparkles className="h-4 w-4 text-yellow-400" />
+              </div>
+
+              {/* Titre Principal */}
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
+                  Trouvez votre
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    paix intérieure
+                  </span>
+                </h1>
+                <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+                  Découvrez la méditation, la relaxation et le bien-être avec des programmes guidés 
+                  adaptés à votre niveau et vos besoins.
+                </p>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
+                  asChild
+                >
+                  <Link href="/courses">
+                    <Play className="h-6 w-6 mr-3" />
+                    Commencer gratuitement
+                  </Link>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white/30 hover:border-white/50 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-8 py-6 text-lg rounded-2xl transition-all duration-300"
+                  asChild
+                >
+                  <Link href="/meditations">
+                    <Headphones className="h-6 w-6 mr-3" />
+                    Découvrir les méditations
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Stats Premium */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12">
+                <div className="text-center space-y-2">
+                  <div className="text-4xl font-bold text-white">50K+</div>
+                  <div className="text-blue-200">Utilisateurs actifs</div>
+                </div>
+                <div className="text-center space-y-2">
+                  <div className="text-4xl font-bold text-white">500+</div>
+                  <div className="text-blue-200">Méditations guidées</div>
+                </div>
+                <div className="text-center space-y-2">
+                  <div className="text-4xl font-bold text-white">100+</div>
+                  <div className="text-blue-200">Cours disponibles</div>
+                </div>
+                <div className="text-center space-y-2">
+                  <div className="text-4xl font-bold text-white">4.9</div>
+                  <div className="text-blue-200">Note moyenne</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* User Greeting Section */}
-        <section className="py-6">
+        <section className="py-12 bg-white/5 backdrop-blur-sm">
           <div className="container-mobile container-tablet container-desktop">
             <UserGreeting variant="extended" showStats={true} />
           </div>
         </section>
 
-        {/* Quick Actions */}
-        <section className="py-4">
+        {/* Quick Actions Premium */}
+        <section className="py-12">
           <div className="container-mobile container-tablet container-desktop">
-            <div className="flex gap-3">
-              <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white h-12 rounded-xl shadow-lg">
-                <Play className="h-5 w-5 mr-2" />
-                Méditation rapide
-              </Button>
-              <Button variant="outline" className="border-slate-300 hover:border-slate-400 h-12 rounded-xl">
-                <Headphones className="h-5 w-5 mr-2" />
-                Écouter
-              </Button>
-              <Button variant="outline" className="border-slate-300 hover:border-slate-400 h-12 rounded-xl">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Cours
-              </Button>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="group cursor-pointer hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-sm hover:from-blue-500/20 hover:to-purple-500/20">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Play className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Méditation rapide</h3>
+                  <p className="text-blue-200 mb-4">Séances de 5-15 minutes pour un moment de détente</p>
+                  <Button className="bg-white/20 hover:bg-white/30 text-white border-0">
+                    Commencer
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="group cursor-pointer hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-green-500/10 to-teal-500/10 backdrop-blur-sm hover:from-green-500/20 hover:to-teal-500/20">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <BookOpen className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Cours guidés</h3>
+                  <p className="text-green-200 mb-4">Programmes complets pour approfondir votre pratique</p>
+                  <Button className="bg-white/20 hover:bg-white/30 text-white border-0">
+                    Explorer
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="group cursor-pointer hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-pink-500/10 to-rose-500/10 backdrop-blur-sm hover:from-pink-500/20 hover:to-rose-500/20">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Heart className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Bien-être</h3>
+                  <p className="text-pink-200 mb-4">Techniques pour améliorer votre qualité de vie</p>
+                  <Button className="bg-white/20 hover:bg-white/30 text-white border-0">
+                    Découvrir
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
 
         {/* Featured Course Hero */}
-        <section className="py-6">
+        <section className="py-16">
           <div className="container-mobile container-tablet container-desktop">
-            <div className="space-y-4">
+            <div className="space-y-8">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-slate-900">Cours en vedette</h2>
-                <Button variant="ghost" className="text-slate-600 hover:text-slate-900" asChild>
+                <div>
+                  <h2 className="text-4xl font-bold text-white mb-2">Cours en vedette</h2>
+                  <p className="text-blue-200 text-lg">Nos programmes les plus populaires</p>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  className="text-white hover:text-white hover:bg-white/10 text-lg px-6 py-3 rounded-xl" 
+                  asChild
+                >
                   <Link href="/courses">
                     Voir tout
-                    <ArrowRight className="h-4 w-4 ml-1" />
+                    <ArrowRight className="h-5 w-5 ml-2" />
                   </Link>
                 </Button>
               </div>
@@ -279,7 +397,7 @@ export default function Home() {
         </section>
 
         {/* Popular Tags Filter */}
-        <section className="py-4">
+        <section className="py-12 bg-white/5 backdrop-blur-sm">
           <div className="container-mobile container-tablet container-desktop">
             <PremiumTagFilter 
               tags={popularTags}
@@ -293,146 +411,146 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Categories */}
-        <section className="py-6">
+        {/* Categories Premium */}
+        <section className="py-16">
           <div className="container-mobile container-tablet container-desktop">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-slate-900">Explorez par catégorie</h2>
-              <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-8">
+              <div className="text-center">
+                <h2 className="text-4xl font-bold text-white mb-4">Explorez par catégorie</h2>
+                <p className="text-blue-200 text-lg">Trouvez le programme qui vous correspond</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {categories.map((category, index) => (
-                  <Card key={index} className="group cursor-pointer hover:shadow-xl transition-all duration-300 border-0 overflow-hidden bg-white/80 backdrop-blur-sm">
-                    <div className="relative h-32 overflow-hidden">
+                  <Card key={index} className="group cursor-pointer hover:shadow-2xl transition-all duration-500 border-0 overflow-hidden bg-white/10 backdrop-blur-sm hover:bg-white/20">
+                    <div className="relative h-48 overflow-hidden">
                       <Image 
                         src={category.image} 
                         alt={category.name}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div 
-                        className="absolute inset-0 opacity-60"
+                        className="absolute inset-0 opacity-60 group-hover:opacity-40 transition-opacity duration-300"
                         style={{ background: `linear-gradient(to top, ${category.color}, transparent)` }}
                       ></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white">
-                          <h3 className="text-lg font-bold mb-1">{category.name}</h3>
-                          <p className="text-sm opacity-90 mb-2">{category.description}</p>
-                          <Badge className="bg-white/20 text-white border-white/30">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center text-white">
+                          <h3 className="text-lg font-bold mb-2">{category.name}</h3>
+                          <p className="text-sm opacity-90 mb-3">{category.description}</p>
+                          <Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm">
                             {category.count} cours
                           </Badge>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         {/* Popular Courses */}
-        <section className="py-6">
-        <div className="container-mobile container-tablet container-desktop">
-            <div className="space-y-4">
+        <section className="py-16">
+          <div className="container-mobile container-tablet container-desktop">
+            <div className="space-y-8">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-slate-900">Cours populaires</h2>
-                <Button variant="ghost" className="text-slate-600 hover:text-slate-900" asChild>
+                <div>
+                  <h2 className="text-4xl font-bold text-white mb-2">Cours populaires</h2>
+                  <p className="text-blue-200 text-lg">Les favoris de notre communauté</p>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  className="text-white hover:text-white hover:bg-white/10 text-lg px-6 py-3 rounded-xl" 
+                  asChild
+                >
                   <Link href="/courses">
                     Voir tout
-                    <ArrowRight className="h-4 w-4 ml-1" />
+                    <ArrowRight className="h-5 w-5 ml-2" />
                   </Link>
                 </Button>
-            </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {featuredCourses.slice(1).map((course) => (
                   <PremiumCourseCard key={course.id} course={course} variant="featured" />
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         {/* More Courses */}
-        <section className="py-6">
-        <div className="container-mobile container-tablet container-desktop">
-            <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-slate-900">Découvrez plus</h2>
-                <Button variant="ghost" className="text-slate-600 hover:text-slate-900" asChild>
+        <section className="py-16 bg-white/5 backdrop-blur-sm">
+          <div className="container-mobile container-tablet container-desktop">
+            <div className="space-y-8">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-4xl font-bold text-white mb-2">Découvrez plus</h2>
+                  <p className="text-blue-200 text-lg">Explorez notre bibliothèque complète</p>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  className="text-white hover:text-white hover:bg-white/10 text-lg px-6 py-3 rounded-xl" 
+                  asChild
+                >
                   <Link href="/courses">
                     Voir tout
-                    <ArrowRight className="h-4 w-4 ml-1" />
+                    <ArrowRight className="h-5 w-5 ml-2" />
                   </Link>
-                      </Button>
-                    </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                </Button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {popularCourses.map((course) => (
                   <PremiumCourseCard key={course.id} course={course} variant="default" />
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-        {/* Stats Section */}
-        <section className="py-12 bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 text-white">
-        <div className="container-mobile container-tablet container-desktop">
-          <div className="text-center space-y-8">
-            <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-bold">
-                  Rejoignez notre communauté
-              </h2>
-              <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-                  Des milliers de personnes ont déjà trouvé la paix intérieure avec Respir
-              </p>
-            </div>
-            
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-400 mb-2">50K+</div>
-                  <div className="text-blue-100">Utilisateurs actifs</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-green-400 mb-2">500+</div>
-                  <div className="text-blue-100">Méditations guidées</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-purple-400 mb-2">100+</div>
-                  <div className="text-blue-100">Cours disponibles</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-yellow-400 mb-2">4.9</div>
-                  <div className="text-blue-100">Note moyenne</div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-        {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="container-mobile container-tablet container-desktop">
+        {/* CTA Final Premium */}
+        <section className="py-20 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 backdrop-blur-sm">
+          <div className="container-mobile container-tablet container-desktop">
             <div className="text-center space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                  Prêt à commencer votre voyage ?
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-6xl font-bold text-white">
+                  Prêt à commencer votre
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    voyage intérieur ?
+                  </span>
                 </h2>
-                <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                  Découvrez la méditation, la relaxation et le bien-être avec des programmes guidés 
-                  adaptés à votre niveau et vos besoins.
+                <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+                  Rejoignez des milliers de personnes qui ont déjà trouvé la paix intérieure avec Respir
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg" asChild>
-                  <Link href="/courses">Commencer gratuitement</Link>
-              </Button>
-                <Button size="lg" variant="outline" className="border-slate-300 hover:border-slate-400 px-8 py-4 text-lg rounded-xl" asChild>
-                  <Link href="/meditations">Découvrir les méditations</Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105" 
+                  asChild
+                >
+                  <Link href="/courses">
+                    <Sparkles className="h-6 w-6 mr-3" />
+                    Commencer gratuitement
+                  </Link>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white/30 hover:border-white/50 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-12 py-6 text-xl rounded-2xl transition-all duration-300" 
+                  asChild
+                >
+                  <Link href="/meditations">
+                    <Headphones className="h-6 w-6 mr-3" />
+                    Découvrir les méditations
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
       </main>
     </div>
   )
