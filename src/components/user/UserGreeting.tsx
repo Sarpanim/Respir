@@ -138,7 +138,7 @@ export function UserGreeting({
                   <Target className="h-5 w-5 text-blue-500" />
                 </div>
                 <div className="text-2xl font-bold text-slate-900">
-                  {formatMeditationTime(userData.total_meditation_minutes)}
+                  {formatMeditationTime(userData.total_meditation_minutes || 0)}
                 </div>
                 <div className="text-xs text-slate-600">médité</div>
               </div>
@@ -213,7 +213,7 @@ export function UserGreeting({
             <div className="flex items-center gap-2">
               <Target className="h-4 w-4 text-blue-500" />
               <span className="text-sm text-slate-600">
-                <span className="font-semibold text-slate-900">{formatMeditationTime(userData.total_meditation_minutes)}</span> médité
+                <span className="font-semibold text-slate-900">{formatMeditationTime(userData.total_meditation_minutes || 0)}</span> médité
               </span>
             </div>
             <div className="flex items-center gap-2">
