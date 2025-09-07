@@ -62,26 +62,45 @@
 /* Mobile-first responsive design utilities */
 @layer utilities {
   .container-mobile {
-    @apply w-full px-4 mx-auto;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .container-tablet {
-    @apply sm:px-6 sm:max-w-2xl;
+    @media (min-width: 640px) {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      max-width: 42rem;
+    }
   }
   
   .container-desktop {
-    @apply lg:px-8 lg:max-w-6xl;
+    @media (min-width: 1024px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 72rem;
+    }
   }
   
   .text-mobile {
-    @apply text-sm leading-5;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
   
   .text-tablet {
-    @apply sm:text-base sm:leading-6;
+    @media (min-width: 640px) {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
   }
   
   .text-desktop {
-    @apply lg:text-lg lg:leading-7;
+    @media (min-width: 1024px) {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
   }
 }
