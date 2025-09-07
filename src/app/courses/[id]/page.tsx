@@ -28,12 +28,13 @@ import PremiumTopNavigation from '@/components/navigation/PremiumTopNavigation'
 import PremiumBottomNavigation from '@/components/navigation/PremiumBottomNavigation'
 
 interface CourseDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default function CourseDetailPage({ params }: CourseDetailPageProps) {
+export default async function CourseDetailPage({ params }: CourseDetailPageProps) {
+  const { id } = await params
   const [activeTab, setActiveTab] = useState('home')
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFavorited, setIsFavorited] = useState(false)
@@ -41,7 +42,7 @@ export default function CourseDetailPage({ params }: CourseDetailPageProps) {
 
   // Données du cours (en réalité, vous récupéreriez cela depuis une API)
   const course = {
-    id: params.id,
+    id: id,
     title: "Méditation du Matin",
     subtitle: "Commencez votre journée en douceur",
     description: "Cette méditation guidée vous aidera à commencer votre journée avec sérénité et énergie positive. Découvrez des techniques de respiration et de visualisation pour cultiver la gratitude et la motivation.",

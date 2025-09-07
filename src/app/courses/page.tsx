@@ -203,8 +203,8 @@ export default function CoursesPage() {
               </h1>
               <p className="text-lg text-white/80 mb-6">
                 Des programmes adaptés à votre niveau et vos besoins
-              </p>
-            </div>
+            </p>
+          </div>
 
             {/* Search Bar */}
             <div className="mb-6">
@@ -213,7 +213,7 @@ export default function CoursesPage() {
                 value={searchQuery}
                 onChange={setSearchQuery}
               />
-            </div>
+        </div>
 
             {/* Filter Tabs */}
             <div className="mb-6">
@@ -250,7 +250,7 @@ export default function CoursesPage() {
               </div>
 
               <div className="flex items-center space-x-2">
-                <select
+              <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'popular' | 'newest' | 'duration')}
                   className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -258,7 +258,7 @@ export default function CoursesPage() {
                   <option value="popular" className="bg-slate-800">Populaire</option>
                   <option value="newest" className="bg-slate-800">Plus récent</option>
                   <option value="duration" className="bg-slate-800">Durée</option>
-                </select>
+              </select>
               </div>
             </div>
 
@@ -335,9 +335,9 @@ export default function CoursesPage() {
                 >
                   Réinitialiser les filtres
                 </button>
-              </div>
-            )}
           </div>
+        )}
+      </div>
         </section>
 
         {/* Bottom Spacing for Navigation */}
