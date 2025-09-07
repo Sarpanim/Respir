@@ -85,6 +85,29 @@ export default function Home() {
             <Link href="/courses">Voir les cours</Link>
           </Button>
         </div>
+
+        {/* Section Administration */}
+        <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
+          <div className="text-center space-y-4">
+            <h2 className="text-2xl font-bold text-blue-900">
+              🛠️ Outils d&apos;Administration
+            </h2>
+            <p className="text-blue-700 max-w-2xl mx-auto">
+              Testez le responsive design et gérez votre application avec nos outils d&apos;administration
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="w-full sm:w-auto" asChild>
+                <Link href="/admin">Dashboard Admin</Link>
+              </Button>
+              <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
+                <Link href="/admin/responsive-test">Test Responsive</Link>
+              </Button>
+              <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
+                <Link href="/admin/ui-test">Test UI Components</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   )
