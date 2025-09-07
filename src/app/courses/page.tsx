@@ -51,7 +51,7 @@ export default function Courses() {
       rating: 4.8,
       total_ratings: 1247,
       total_students: 15600,
-      level: "debutant",
+      level: "debutant" as const,
       instructor: {
         name: "Sarah Johnson",
         avatar_url: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
@@ -80,7 +80,7 @@ export default function Courses() {
       rating: 4.9,
       total_ratings: 892,
       total_students: 12300,
-      level: "intermediaire",
+      level: "intermediaire" as const,
       instructor: {
         name: "Michael Chen",
         avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
@@ -109,7 +109,7 @@ export default function Courses() {
       rating: 4.7,
       total_ratings: 634,
       total_students: 8900,
-      level: "intermediaire",
+      level: "intermediaire" as const,
       instructor: {
         name: "Emma Wilson",
         avatar_url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
@@ -138,7 +138,7 @@ export default function Courses() {
       rating: 4.6,
       total_ratings: 456,
       total_students: 5600,
-      level: "debutant",
+      level: "debutant" as const,
       instructor: {
         name: "David Lee",
         avatar_url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
@@ -166,7 +166,7 @@ export default function Courses() {
       rating: 4.9,
       total_ratings: 234,
       total_students: 3200,
-      level: "avance",
+      level: "avance" as const,
       instructor: {
         name: "James Taylor",
         avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
@@ -194,7 +194,7 @@ export default function Courses() {
       rating: 4.8,
       total_ratings: 567,
       total_students: 7800,
-      level: "intermediaire",
+      level: "intermediaire" as const,
       instructor: {
         name: "Lisa Martinez",
         avatar_url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"

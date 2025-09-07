@@ -45,7 +45,7 @@ export default function Home() {
       rating: 4.8,
       total_ratings: 1247,
       total_students: 15600,
-      level: "debutant",
+      level: "debutant" as const,
       instructor: {
         name: "Sarah Johnson",
         avatar_url: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
@@ -75,7 +75,7 @@ export default function Home() {
       rating: 4.9,
       total_ratings: 892,
       total_students: 12300,
-      level: "intermediaire",
+      level: "intermediaire" as const,
       instructor: {
         name: "Michael Chen",
         avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
@@ -105,7 +105,7 @@ export default function Home() {
       rating: 4.7,
       total_ratings: 634,
       total_students: 8900,
-      level: "intermediaire",
+      level: "intermediaire" as const,
       instructor: {
         name: "Emma Wilson",
         avatar_url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
@@ -137,7 +137,7 @@ export default function Home() {
       rating: 4.6,
       total_ratings: 456,
       total_students: 5600,
-      level: "debutant",
+      level: "debutant" as const,
       instructor: {
         name: "David Lee",
         avatar_url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
@@ -165,7 +165,7 @@ export default function Home() {
       rating: 4.9,
       total_ratings: 234,
       total_students: 3200,
-      level: "avance",
+      level: "avance" as const,
       instructor: {
         name: "James Taylor",
         avatar_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
@@ -184,32 +184,32 @@ export default function Home() {
   const categories = [
     {
       name: "Apprendre à méditer",
-      description: "Découvrez les bases de la méditation",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+                  description: "Découvrez les bases de la méditation",
+                  image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
       color: "#10B981",
       count: 12,
       icon: "sparkles"
-    },
-    {
+                },
+                {
       name: "Gérer l'anxiété",
-      description: "Techniques pour calmer l'esprit",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
+                  description: "Techniques pour calmer l'esprit",
+                  image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
       color: "#F59E0B",
       count: 8,
       icon: "heart"
-    },
-    {
+                },
+                {
       name: "Réduire le stress",
-      description: "Méthodes de relaxation efficaces",
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
+                  description: "Méthodes de relaxation efficaces",
+                  image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
       color: "#EF4444",
       count: 15,
       icon: "zap"
-    },
-    {
+                },
+                {
       name: "Améliorer le sommeil",
-      description: "Routines pour un repos réparateur",
-      image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop",
+                  description: "Routines pour un repos réparateur",
+                  image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop",
       color: "#3B82F6",
       count: 6,
       icon: "clock"
@@ -310,26 +310,26 @@ export default function Home() {
                         className="absolute inset-0 opacity-60"
                         style={{ background: `linear-gradient(to top, ${category.color}, transparent)` }}
                       ></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center text-white">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white">
                           <h3 className="text-lg font-bold mb-1">{category.name}</h3>
                           <p className="text-sm opacity-90 mb-2">{category.description}</p>
                           <Badge className="bg-white/20 text-white border-white/30">
                             {category.count} cours
                           </Badge>
-                        </div>
                       </div>
                     </div>
-                  </Card>
-                ))}
-              </div>
+                  </div>
+                </Card>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Popular Courses */}
         <section className="py-6">
-          <div className="container-mobile container-tablet container-desktop">
+        <div className="container-mobile container-tablet container-desktop">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-slate-900">Cours populaires</h2>
@@ -339,51 +339,51 @@ export default function Home() {
                     <ArrowRight className="h-4 w-4 ml-1" />
                   </Link>
                 </Button>
-              </div>
+            </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {featuredCourses.slice(1).map((course) => (
                   <PremiumCourseCard key={course.id} course={course} variant="featured" />
-                ))}
-              </div>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* More Courses */}
         <section className="py-6">
-          <div className="container-mobile container-tablet container-desktop">
+        <div className="container-mobile container-tablet container-desktop">
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-slate-900">Découvrez plus</h2>
                 <Button variant="ghost" className="text-slate-600 hover:text-slate-900" asChild>
                   <Link href="/courses">
                     Voir tout
                     <ArrowRight className="h-4 w-4 ml-1" />
                   </Link>
-                </Button>
-              </div>
+                      </Button>
+                    </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {popularCourses.map((course) => (
                   <PremiumCourseCard key={course.id} course={course} variant="default" />
-                ))}
-              </div>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Stats Section */}
         <section className="py-12 bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 text-white">
-          <div className="container-mobile container-tablet container-desktop">
-            <div className="text-center space-y-8">
-              <div className="space-y-4">
+        <div className="container-mobile container-tablet container-desktop">
+          <div className="text-center space-y-8">
+            <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold">
                   Rejoignez notre communauté
-                </h2>
-                <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+              </h2>
+              <p className="text-xl text-blue-100 max-w-2xl mx-auto">
                   Des milliers de personnes ont déjà trouvé la paix intérieure avec Respir
-                </p>
-              </div>
-              
+              </p>
+            </div>
+            
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-blue-400 mb-2">50K+</div>
@@ -401,14 +401,14 @@ export default function Home() {
                   <div className="text-4xl font-bold text-yellow-400 mb-2">4.9</div>
                   <div className="text-blue-100">Note moyenne</div>
                 </div>
-              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
-          <div className="container-mobile container-tablet container-desktop">
+        <div className="container-mobile container-tablet container-desktop">
             <div className="text-center space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
@@ -423,14 +423,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg" asChild>
                   <Link href="/courses">Commencer gratuitement</Link>
-                </Button>
+              </Button>
                 <Button size="lg" variant="outline" className="border-slate-300 hover:border-slate-400 px-8 py-4 text-lg rounded-xl" asChild>
                   <Link href="/meditations">Découvrir les méditations</Link>
-                </Button>
-              </div>
+              </Button>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
       </main>
     </div>
   )
