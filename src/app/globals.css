@@ -105,28 +105,41 @@
   }
 }
 
-/* Palette minimaliste avec thème sombre */
+/* Palette professionnelle inspirée Headspace/Calm */
 @layer base {
   :root {
-    /* Palette minimaliste sombre */
-    --primary-bg: #0F0F0F;
-    --secondary-bg: #1A1A1A;
-    --card-bg: #2A2A2A;
-    --primary-text: #E5E5E5;
-    --secondary-text: #A0A0A0;
-    --accent: #6366F1;
-    --accent-light: #8B5CF6;
-    --border: #404040;
-    --hover-bg: #333333;
-    --gradient-main: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
-    --gradient-accent: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+    /* Palette bleu foncé et gris élégante */
+    --primary-bg: #0B1426;
+    --secondary-bg: #1A2332;
+    --card-bg: #2A3441;
+    --primary-text: #FFFFFF;
+    --secondary-text: #B8C5D1;
+    --accent: #4A90E2;
+    --accent-light: #7BB3F0;
+    --accent-dark: #2E5BBA;
+    --border: #3A4A5C;
+    --hover-bg: #34404F;
+    --success: #4CAF50;
+    --warning: #FF9800;
+    --gradient-main: linear-gradient(135deg, #0B1426 0%, #1A2332 100%);
+    --gradient-accent: linear-gradient(135deg, #4A90E2 0%, #7BB3F0 100%);
+    --gradient-card: linear-gradient(135deg, #2A3441 0%, #34404F 100%);
   }
 }
 
-/* Typography minimaliste */
+/* Typography professionnelle */
 @layer components {
-  .text-premium-title {
-    font-size: 2.5rem;
+  .text-hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--primary-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .text-section-title {
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -134,42 +147,93 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  .text-premium-subtitle {
-    font-size: 1.125rem;
-    font-weight: 500;
-    line-height: 1.4;
-    color: var(--secondary-text);
+  .text-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--primary-text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  .text-premium-body {
-    font-size: 1rem;
+  .text-body {
+    font-size: 1.125rem;
     font-weight: 400;
     line-height: 1.6;
     color: var(--secondary-text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  /* Cards minimalistes */
-  .card-premium {
-    background: var(--card-bg);
-    border-radius: 16px;
+  .text-caption {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--secondary-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Cards professionnelles */
+  .card-professional {
+    background: var(--gradient-card);
+    border-radius: 20px;
     border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 2rem;
   }
 
-  .card-premium:hover {
-    background: var(--hover-bg);
+  .card-professional:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
     border-color: var(--accent);
   }
 
-  /* Gradients minimalistes */
+  /* Boutons professionnels */
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(74, 144, 226, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(74, 144, 226, 0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    border: 2px solid var(--accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Gradients professionnels */
   .gradient-main {
     background: var(--gradient-main);
   }
 
   .gradient-accent {
     background: var(--gradient-accent);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
   }
 }
