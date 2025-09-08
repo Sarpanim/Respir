@@ -2,36 +2,8 @@
 
 import { useState } from 'react'
 import { 
-  Settings, 
-  Edit, 
-  Camera, 
-  Award, 
-  Target, 
-  Calendar, 
-  Clock, 
-  Flame, 
-  Star, 
-  TrendingUp, 
-  BookOpen, 
-  Play, 
-  Heart, 
-  Download, 
-  Share, 
-  Bell, 
-  Moon, 
-  Sun, 
-  Shield, 
-  HelpCircle, 
-  LogOut,
-  Home,
-  Search,
-  Users,
-  Info
+  Settings, Edit, Camera, Award, Target, Calendar, Clock, Flame, Star, TrendingUp, BookOpen, Play, Heart, Download, Share, Bell, Moon, Sun, Shield, HelpCircle, LogOut, Home, Search, Users, Info, ChevronRight, CheckCircle
 } from 'lucide-react'
-
-// Import des composants premium
-import PremiumTopNavigation from '@/components/navigation/PremiumTopNavigation'
-import PremiumBottomNavigation from '@/components/navigation/PremiumBottomNavigation'
 
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState('profile')
@@ -58,7 +30,7 @@ export default function ProfilePage() {
       icon: Flame,
       label: "Série actuelle",
       value: `${user.currentStreak} jours`,
-      color: "orange",
+      color: "text-orange-500",
       trend: "up",
       trendValue: "+2"
     },
@@ -66,7 +38,7 @@ export default function ProfilePage() {
       icon: Target,
       label: "Temps médité",
       value: user.totalMeditationTime,
-      color: "blue",
+      color: "text-blue-500",
       trend: "up",
       trendValue: "+2h"
     },
@@ -74,7 +46,7 @@ export default function ProfilePage() {
       icon: BookOpen,
       label: "Cours terminés",
       value: `${user.coursesCompleted}`,
-      color: "green",
+      color: "text-green-500",
       trend: "up",
       trendValue: "+1"
     },
@@ -82,7 +54,7 @@ export default function ProfilePage() {
       icon: Play,
       label: "Méditations",
       value: `${user.meditationsCompleted}`,
-      color: "purple",
+      color: "text-purple-500",
       trend: "up",
       trendValue: "+3"
     }
@@ -175,212 +147,182 @@ export default function ProfilePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
-      {/* Navigation Top Premium */}
-      <PremiumTopNavigation 
-        title="Profil"
-        showPremium={false}
-        showSearch={false}
-        showFavorites={false}
-        showMenu={false}
-        showNotifications={false}
-        showSettings={true}
-      />
-
-      <main className="pt-16">
-        {/* Profile Header */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <div className="text-center mb-8">
-              {/* Avatar */}
-              <div className="relative inline-block mb-4">
-                <img 
-                  src={user.avatar} 
-                  alt={user.name}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-white/20"
-                />
-                <button className="absolute bottom-0 right-0 bg-blue-500 rounded-full p-2 hover:bg-blue-600 transition-all duration-200">
-                  <Camera className="w-4 h-4 text-white" />
-                </button>
-              </div>
-
-              {/* User Info */}
-              <h1 className="text-2xl font-bold text-white mb-2">{user.name}</h1>
-              <p className="text-white/60 mb-4">{user.email}</p>
-              
-              {/* Level Badge */}
-              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded-full mb-4">
-                <Award className="w-4 h-4 text-white" />
-                <span className="text-white font-medium">{user.level}</span>
-              </div>
-
-              {/* Join Date */}
-              <p className="text-white/60 text-sm">Membre depuis {user.joinDate}</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Top Navigation */}
+      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-4">
+              <Heart className="w-6 h-6 text-purple-600" />
+              <Search className="w-6 h-6 text-gray-400" />
+              <div className="w-6 h-6" />
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <Bell className="w-6 h-6 text-gray-400" />
+              <Settings className="w-6 h-6 text-gray-400" />
             </div>
           </div>
-        </section>
+        </div>
+      </nav>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Profile Header */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
+          <div className="text-center">
+            {/* Avatar */}
+            <div className="relative inline-block mb-6">
+              <img 
+                src={user.avatar} 
+                alt={user.name}
+                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
+              />
+              <button className="absolute bottom-0 right-0 bg-purple-600 rounded-full p-2 hover:bg-purple-700 transition-colors">
+                <Camera className="w-4 h-4 text-white" />
+              </button>
+            </div>
+
+            {/* User Info */}
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">{user.name}</h1>
+            <p className="text-gray-600 mb-4">{user.email}</p>
+            
+            {/* Level Badge */}
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded-full mb-4">
+              <Award className="w-4 h-4 text-white" />
+              <span className="text-white font-medium">{user.level}</span>
+            </div>
+
+            {/* Join Date */}
+            <p className="text-gray-500 text-sm">Membre depuis {user.joinDate}</p>
+          </div>
+        </div>
 
         {/* Statistics Grid */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <h2 className="text-xl font-semibold text-white mb-6">Statistiques</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/20 transition-all duration-200">
-                  <stat.icon className={`w-6 h-6 mx-auto mb-2 ${
-                    stat.color === 'orange' ? 'text-orange-400' :
-                    stat.color === 'blue' ? 'text-blue-400' :
-                    stat.color === 'green' ? 'text-green-400' :
-                    'text-purple-400'
-                  }`} />
-                  <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-sm text-white/70 mb-1">{stat.label}</div>
-                  <div className="text-xs text-green-400">{stat.trendValue}</div>
-                </div>
-              ))}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 text-center">
+              <stat.icon className={`w-8 h-8 mx-auto mb-3 ${stat.color}`} />
+              <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
+              <div className="text-sm text-gray-600 mb-1">{stat.label}</div>
+              <div className="text-xs text-green-500">{stat.trendValue}</div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
 
         {/* Achievements */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <h2 className="text-xl font-semibold text-white mb-6">Achievements</h2>
-            <div className="space-y-4">
-              {achievements.map((achievement) => (
-                <div key={achievement.id} className={`bg-white/10 backdrop-blur-sm rounded-2xl p-4 ${
-                  achievement.isUnlocked ? 'opacity-100' : 'opacity-60'
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Achievements</h2>
+          <div className="space-y-4">
+            {achievements.map((achievement) => (
+              <div key={achievement.id} className={`flex items-center space-x-4 p-4 rounded-xl ${
+                achievement.isUnlocked ? 'bg-gray-50' : 'bg-gray-100'
+              }`}>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                  achievement.isUnlocked 
+                    ? `bg-gradient-to-r ${
+                        achievement.color === 'yellow' ? 'from-yellow-500 to-orange-500' :
+                        achievement.color === 'orange' ? 'from-orange-500 to-red-500' :
+                        achievement.color === 'blue' ? 'from-blue-500 to-purple-500' :
+                        achievement.color === 'purple' ? 'from-purple-500 to-pink-500' :
+                        'from-green-500 to-teal-500'
+                      }`
+                    : 'bg-gray-300'
                 }`}>
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                      achievement.isUnlocked 
-                        ? `bg-gradient-to-r ${
-                            achievement.color === 'yellow' ? 'from-yellow-500 to-orange-500' :
-                            achievement.color === 'orange' ? 'from-orange-500 to-red-500' :
-                            achievement.color === 'blue' ? 'from-blue-500 to-purple-500' :
-                            achievement.color === 'purple' ? 'from-purple-500 to-pink-500' :
-                            'from-green-500 to-teal-500'
-                          }`
-                        : 'bg-white/20'
-                    }`}>
-                      <achievement.icon className={`w-6 h-6 ${
-                        achievement.isUnlocked ? 'text-white' : 'text-white/60'
-                      }`} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className={`font-semibold ${
-                        achievement.isUnlocked ? 'text-white' : 'text-white/60'
-                      }`}>
-                        {achievement.title}
-                      </h3>
-                      <p className={`text-sm ${
-                        achievement.isUnlocked ? 'text-white/70' : 'text-white/50'
-                      }`}>
-                        {achievement.description}
-                      </p>
-                      {achievement.isUnlocked ? (
-                        <p className="text-xs text-white/60 mt-1">
-                          Débloqué le {achievement.unlockedDate}
-                        </p>
-                      ) : (
-                        <div className="mt-2">
-                          <div className="w-full bg-white/20 rounded-full h-2">
-                            <div 
-                              className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
-                              style={{ width: `${achievement.progress}%` }}
-                            ></div>
-                          </div>
-                          <p className="text-xs text-white/60 mt-1">{achievement.progress}%</p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <achievement.icon className={`w-6 h-6 ${
+                    achievement.isUnlocked ? 'text-white' : 'text-gray-500'
+                  }`} />
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Recent Courses */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <h2 className="text-xl font-semibold text-white mb-6">Cours récents</h2>
-            <div className="space-y-4">
-              {recentCourses.map((course) => (
-                <div key={course.id} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 hover:bg-white/20 transition-all duration-200">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <h3 className="text-white font-medium">{course.title}</h3>
-                      <p className="text-white/60 text-sm">{course.category} • {course.duration}</p>
-                      <p className="text-white/50 text-xs">{course.completedAt}</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-white font-semibold">{course.progress}%</div>
-                      <div className="w-16 bg-white/20 rounded-full h-2 mt-1">
+                <div className="flex-1">
+                  <h3 className={`font-semibold ${
+                    achievement.isUnlocked ? 'text-gray-900' : 'text-gray-500'
+                  }`}>
+                    {achievement.title}
+                  </h3>
+                  <p className={`text-sm ${
+                    achievement.isUnlocked ? 'text-gray-600' : 'text-gray-400'
+                  }`}>
+                    {achievement.description}
+                  </p>
+                  {achievement.isUnlocked ? (
+                    <p className="text-xs text-gray-500 mt-1">
+                      Débloqué le {achievement.unlockedDate}
+                    </p>
+                  ) : (
+                    <div className="mt-2">
+                      <div className="w-full bg-gray-200 rounded-full h-2">
                         <div 
-                          className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${course.progress}%` }}
+                          className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
+                          style={{ width: `${achievement.progress}%` }}
                         ></div>
                       </div>
+                      <p className="text-xs text-gray-500 mt-1">{achievement.progress}%</p>
                     </div>
+                  )}
+                </div>
+                {achievement.isUnlocked && (
+                  <CheckCircle className="w-6 h-6 text-green-500" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Recent Courses */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Cours récents</h2>
+          <div className="space-y-4">
+            {recentCourses.map((course) => (
+              <div key={course.id} className="flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900">{course.title}</h3>
+                  <p className="text-gray-600 text-sm">{course.category} • {course.duration}</p>
+                  <p className="text-gray-500 text-xs">{course.completedAt}</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-gray-900 font-semibold">{course.progress}%</div>
+                  <div className="w-16 bg-gray-200 rounded-full h-2 mt-1">
+                    <div 
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${course.progress}%` }}
+                    ></div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
 
         {/* Menu Options */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
-              {menuOptions.map((option, index) => (
-                <button
-                  key={option.id}
-                  className={`w-full flex items-center justify-between p-4 hover:bg-white/10 transition-all duration-200 ${
-                    index !== menuOptions.length - 1 ? 'border-b border-white/10' : ''
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <option.icon className={`w-5 h-5 ${
-                      option.isDestructive ? 'text-red-400' : 'text-white/80'
-                    }`} />
-                    <span className={`font-medium ${
-                      option.isDestructive ? 'text-red-400' : 'text-white'
-                    }`}>
-                      {option.label}
-                    </span>
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          {menuOptions.map((option, index) => (
+            <button
+              key={option.id}
+              className={`w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors ${
+                index !== menuOptions.length - 1 ? 'border-b border-gray-200' : ''
+              }`}
+            >
+              <div className="flex items-center space-x-3">
+                <option.icon className={`w-5 h-5 ${
+                  option.isDestructive ? 'text-red-500' : 'text-gray-600'
+                }`} />
+                <span className={`font-medium ${
+                  option.isDestructive ? 'text-red-500' : 'text-gray-900'
+                }`}>
+                  {option.label}
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                {option.hasBadge && (
+                  <div className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    3
                   </div>
-                  <div className="flex items-center space-x-2">
-                    {option.hasBadge && (
-                      <div className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                        3
-                      </div>
-                    )}
-                    <span className="text-white/60">›</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Bottom Spacing for Navigation */}
-        <div className="h-20"></div>
-      </main>
-
-      {/* Bottom Navigation Premium */}
-      <PremiumBottomNavigation
-        tabs={[
-          { id: 'home', label: 'Accueil', icon: Home },
-          { id: 'meditate', label: 'Méditer', icon: Play },
-          { id: 'explore', label: 'Explorer', icon: Search },
-          { id: 'profile', label: 'Profil', icon: Users, active: true },
-          { id: 'stats', label: 'Stats', icon: Target }
-        ]}
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
+                )}
+                <ChevronRight className="w-5 h-5 text-gray-400" />
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
