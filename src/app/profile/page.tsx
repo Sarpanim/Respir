@@ -25,7 +25,8 @@ import {
   LogOut,
   Home,
   Search,
-  Users
+  Users,
+  Info
 } from 'lucide-react'
 
 // Import des composants premium
