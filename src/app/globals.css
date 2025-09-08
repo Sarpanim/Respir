@@ -105,27 +105,25 @@
   }
 }
 
-/* Palette nature premium inspirée d'Insight Timer */
+/* Palette minimaliste avec thème sombre */
 @layer base {
   :root {
-    /* Palette nature premium */
-    --primary-bg: #181C23;
-    --secondary-bg: #ECE7E1;
-    --card-bg: #FEFEFE;
-    --primary-text: #222;
-    --secondary-text: #626262;
-    --accent: #A3B5A6;
-    --warm-gray: #F5F5F5;
-    --deep-black: #0A0A0A;
-    --nature-green: #8FBC8F;
-    --soft-beige: #F8F6F0;
-    --gradient-main: linear-gradient(120deg, #233D4D 0%, #A7C7E7 100%);
-    --gradient-warm: linear-gradient(135deg, #F8F6F0 0%, #ECE7E1 100%);
-    --gradient-nature: linear-gradient(135deg, #8FBC8F 0%, #A3B5A6 100%);
+    /* Palette minimaliste sombre */
+    --primary-bg: #0F0F0F;
+    --secondary-bg: #1A1A1A;
+    --card-bg: #2A2A2A;
+    --primary-text: #E5E5E5;
+    --secondary-text: #A0A0A0;
+    --accent: #6366F1;
+    --accent-light: #8B5CF6;
+    --border: #404040;
+    --hover-bg: #333333;
+    --gradient-main: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+    --gradient-accent: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   }
 }
 
-/* Typography premium */
+/* Typography minimaliste */
 @layer components {
   .text-premium-title {
     font-size: 2.5rem;
@@ -133,6 +131,7 @@
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--primary-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   .text-premium-subtitle {
@@ -140,6 +139,7 @@
     font-weight: 500;
     line-height: 1.4;
     color: var(--secondary-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   .text-premium-body {
@@ -147,33 +147,29 @@
     font-weight: 400;
     line-height: 1.6;
     color: var(--secondary-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  /* Cards premium */
+  /* Cards minimalistes */
   .card-premium {
     background: var(--card-bg);
-    border-radius: 24px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid var(--border);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem;
   }
 
   .card-premium:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    background: var(--hover-bg);
+    border-color: var(--accent);
   }
 
-  /* Gradients premium */
-  .gradient-nature {
-    background: var(--gradient-nature);
-  }
-
-  .gradient-warm {
-    background: var(--gradient-warm);
-  }
-
+  /* Gradients minimalistes */
   .gradient-main {
     background: var(--gradient-main);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
   }
 }

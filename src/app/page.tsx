@@ -88,73 +88,73 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--secondary-bg)' }}>
+    <div className="min-h-screen" style={{ background: 'var(--primary-bg)' }}>
       {/* Navigation Top */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="container-mobile px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Heart className="w-6 h-6 text-gray-600" />
-            <Search className="w-6 h-6 text-gray-600" />
-            <Menu className="w-6 h-6 text-gray-600" />
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b" style={{ borderColor: 'var(--border)' }}>
+        <div className="container-mobile px-6 py-6 flex items-center justify-between">
+          <div className="flex items-center space-x-6">
+            <Heart className="w-6 h-6" style={{ color: 'var(--secondary-text)' }} />
+            <Search className="w-6 h-6" style={{ color: 'var(--secondary-text)' }} />
+            <Menu className="w-6 h-6" style={{ color: 'var(--secondary-text)' }} />
           </div>
           
-          <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded-full">
-              <span className="text-white text-sm font-medium flex items-center space-x-1">
+          <div className="flex items-center space-x-4">
+            <div className="gradient-accent px-6 py-3 rounded-full">
+              <span className="text-white text-sm font-medium flex items-center space-x-2">
                 <Sparkles className="w-4 h-4" />
                 <span>Premium</span>
               </span>
             </div>
-            <Bell className="w-6 h-6 text-gray-600" />
-            <Settings className="w-6 h-6 text-gray-600" />
+            <Bell className="w-6 h-6" style={{ color: 'var(--secondary-text)' }} />
+            <Settings className="w-6 h-6" style={{ color: 'var(--secondary-text)' }} />
           </div>
         </div>
       </nav>
 
-      <main className="pt-20">
+      <main className="pt-24">
         {/* Hero Section */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <div className="text-center mb-8">
-              <h1 className="text-premium-title mb-4">
+        <section className="py-12">
+          <div className="container-mobile px-6">
+            <div className="text-center mb-12">
+              <h1 className="text-premium-title mb-6" style={{ color: 'var(--primary-text)' }}>
                 Good Morning, Olivier
               </h1>
-              <p className="text-premium-subtitle mb-6">
+              <p className="text-premium-subtitle mb-8" style={{ color: 'var(--secondary-text)' }}>
                 Start your day with mindfulness and peace
               </p>
             </div>
 
             {/* App Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-800 mb-1">50K+</div>
-                <div className="text-sm text-gray-600">Active Users</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>50K+</div>
+                <div className="text-sm" style={{ color: 'var(--secondary-text)' }}>Active Users</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-800 mb-1">100+</div>
-                <div className="text-sm text-gray-600">Available Courses</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>100+</div>
+                <div className="text-sm" style={{ color: 'var(--secondary-text)' }}>Available Courses</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-800 mb-1">500+</div>
-                <div className="text-sm text-gray-600">Guided Meditations</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>500+</div>
+                <div className="text-sm" style={{ color: 'var(--secondary-text)' }}>Guided Meditations</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-800 mb-1">4.9</div>
-                <div className="text-sm text-gray-600">Average Rating</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>4.9</div>
+                <div className="text-sm" style={{ color: 'var(--secondary-text)' }}>Average Rating</div>
               </div>
             </div>
 
             {/* Call to Action */}
-            <div className="text-center mb-8">
-              <p className="text-premium-body mb-6">
+            <div className="text-center mb-12">
+              <p className="text-premium-body mb-8" style={{ color: 'var(--secondary-text)' }}>
                 Discover meditation, relaxation, and well-being with guided programs adapted to your level and needs.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <button className="gradient-accent text-white px-10 py-5 rounded-2xl font-semibold text-lg hover:opacity-90 transition-all duration-200 flex items-center justify-center space-x-3">
                   <Play className="w-5 h-5" />
                   <span>Start for Free</span>
                 </button>
-                <button className="border-2 border-blue-500 text-blue-500 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-blue-50 transition-all duration-200 flex items-center justify-center space-x-2">
+                <button className="border-2 px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-opacity-10 transition-all duration-200 flex items-center justify-center space-x-3" style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}>
                   <BookOpen className="w-5 h-5" />
                   <span>Discover Meditations</span>
                 </button>
@@ -164,38 +164,38 @@ export default function HomePage() {
         </section>
 
         {/* Featured Content */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Featured Content</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <section className="py-12">
+          <div className="container-mobile px-6">
+            <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--primary-text)' }}>Featured Content</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {featuredContent.map((item) => (
-                <div key={item.id} className="card-premium p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${item.gradient} flex items-center justify-center`}>
+                <div key={item.id} className="card-premium">
+                  <div className="flex items-center space-x-6 mb-6">
+                    <div className={`w-20 h-20 rounded-2xl gradient-accent flex items-center justify-center`}>
                       {item.type === 'course' ? (
-                        <BookOpen className="w-8 h-8 text-white" />
+                        <BookOpen className="w-10 h-10 text-white" />
                       ) : (
-                        <Music className="w-8 h-8 text-white" />
+                        <Music className="w-10 h-10 text-white" />
                       )}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-1">{item.title}</h3>
-                      <p className="text-gray-600 text-sm">{item.subtitle}</p>
+                      <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>{item.title}</h3>
+                      <p className="text-lg" style={{ color: 'var(--secondary-text)' }}>{item.subtitle}</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center space-x-1">
-                        <Clock className="w-4 h-4 text-gray-500" />
-                        <span className="text-gray-600 text-sm">{item.duration}</span>
+                    <div className="flex items-center space-x-6">
+                      <div className="flex items-center space-x-2">
+                        <Clock className="w-5 h-5" style={{ color: 'var(--secondary-text)' }} />
+                        <span className="text-lg" style={{ color: 'var(--secondary-text)' }}>{item.duration}</span>
                       </div>
                       {item.isPremium && (
-                        <div className="bg-gradient-to-r from-purple-500 to-pink-500 px-2 py-1 rounded-full">
-                          <span className="text-white text-xs font-medium">Premium</span>
+                        <div className="gradient-accent px-3 py-1 rounded-full">
+                          <span className="text-white text-sm font-medium">Premium</span>
                         </div>
                       )}
                     </div>
-                    <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200">
+                    <button className="gradient-accent text-white px-8 py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition-all duration-200">
                       Start
                     </button>
                   </div>
@@ -206,23 +206,23 @@ export default function HomePage() {
         </section>
 
         {/* Daily Thought */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <div className="card-premium p-6 mb-8">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center">
-                  <PlayCircle className="w-6 h-6 text-white" />
+        <section className="py-12">
+          <div className="container-mobile px-6">
+            <div className="card-premium mb-12">
+              <div className="flex items-center space-x-6">
+                <div className="w-16 h-16 gradient-accent rounded-2xl flex items-center justify-center">
+                  <PlayCircle className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{dailyThought.title}</h3>
-                  <p className="text-gray-600 text-sm mb-2">{dailyThought.content}</p>
-                  <div className="flex items-center space-x-2">
-                    <Clock className="w-4 h-4 text-gray-500" />
-                    <span className="text-gray-600 text-sm">{dailyThought.duration}</span>
+                  <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>{dailyThought.title}</h3>
+                  <p className="text-lg mb-3" style={{ color: 'var(--secondary-text)' }}>{dailyThought.content}</p>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-5 h-5" style={{ color: 'var(--secondary-text)' }} />
+                    <span className="text-lg" style={{ color: 'var(--secondary-text)' }}>{dailyThought.duration}</span>
                   </div>
                 </div>
-                <button className="bg-gradient-to-r from-green-500 to-teal-600 text-white p-3 rounded-xl hover:from-green-600 hover:to-teal-700 transition-all duration-200">
-                  <Play className="w-5 h-5" />
+                <button className="gradient-accent text-white p-4 rounded-2xl hover:opacity-90 transition-all duration-200">
+                  <Play className="w-6 h-6" />
                 </button>
               </div>
             </div>
@@ -230,15 +230,15 @@ export default function HomePage() {
         </section>
 
         {/* User Stats */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Your Progress</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <section className="py-12">
+          <div className="container-mobile px-6">
+            <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--primary-text)' }}>Your Progress</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               {userStats.map((stat, index) => (
-                <div key={index} className="card-premium p-4 text-center">
-                  <stat.icon className={`w-8 h-8 mx-auto mb-2 ${stat.color}`} />
-                  <div className="text-2xl font-bold text-gray-800 mb-1">{stat.label}</div>
-                  <div className="text-sm text-gray-600">{stat.subtitle}</div>
+                <div key={index} className="card-premium text-center">
+                  <stat.icon className={`w-10 h-10 mx-auto mb-4 ${stat.color}`} />
+                  <div className="text-3xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>{stat.label}</div>
+                  <div className="text-lg" style={{ color: 'var(--secondary-text)' }}>{stat.subtitle}</div>
                 </div>
               ))}
             </div>
@@ -246,33 +246,33 @@ export default function HomePage() {
         </section>
 
         {/* Recommended Content */}
-        <section className="py-8">
-          <div className="container-mobile px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-800">Recommended for you</h2>
-              <button className="text-blue-500 text-sm font-medium flex items-center space-x-1">
+        <section className="py-12">
+          <div className="container-mobile px-6">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-3xl font-bold" style={{ color: 'var(--primary-text)' }}>Recommended for you</h2>
+              <button className="text-lg font-medium flex items-center space-x-2 hover:opacity-80 transition-all duration-200" style={{ color: 'var(--accent)' }}>
                 <span>View all</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {recommendedContent.map((item) => (
-                <div key={item.id} className="card-premium p-4">
-                  <div className="h-32 rounded-xl overflow-hidden mb-4">
+                <div key={item.id} className="card-premium">
+                  <div className="h-40 rounded-2xl overflow-hidden mb-6">
                     <img 
                       src={item.image} 
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{item.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{item.subtitle}</p>
+                  <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--primary-text)' }}>{item.title}</h3>
+                  <p className="text-lg mb-4" style={{ color: 'var(--secondary-text)' }}>{item.subtitle}</p>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-1">
-                      <Clock className="w-4 h-4 text-gray-500" />
-                      <span className="text-gray-600 text-sm">{item.duration}</span>
+                    <div className="flex items-center space-x-2">
+                      <Clock className="w-5 h-5" style={{ color: 'var(--secondary-text)' }} />
+                      <span className="text-lg" style={{ color: 'var(--secondary-text)' }}>{item.duration}</span>
                     </div>
-                    <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200 text-sm">
+                    <button className="gradient-accent text-white px-6 py-3 rounded-xl font-semibold text-lg hover:opacity-90 transition-all duration-200">
                       Start
                     </button>
                   </div>
@@ -287,8 +287,8 @@ export default function HomePage() {
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-t border-gray-200">
-        <div className="container-mobile px-4 py-2">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-t" style={{ borderColor: 'var(--border)' }}>
+        <div className="container-mobile px-6 py-4">
           <div className="flex items-center justify-around">
             {[
               { id: 'home', label: 'Home', icon: Home, active: true },
@@ -300,14 +300,18 @@ export default function HomePage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-xl transition-all duration-200 ${
+                className={`flex flex-col items-center space-y-2 py-3 px-4 rounded-xl transition-all duration-200 ${
                   tab.active 
-                    ? 'text-blue-500' 
-                    : 'text-gray-500 hover:text-gray-700'
+                    ? 'text-white' 
+                    : 'hover:text-white'
                 }`}
+                style={{ 
+                  color: tab.active ? 'var(--accent)' : 'var(--secondary-text)',
+                  backgroundColor: tab.active ? 'var(--hover-bg)' : 'transparent'
+                }}
               >
-                <tab.icon className="w-5 h-5" />
-                <span className="text-xs font-medium">{tab.label}</span>
+                <tab.icon className="w-6 h-6" />
+                <span className="text-sm font-medium">{tab.label}</span>
               </button>
             ))}
           </div>
