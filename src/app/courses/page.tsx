@@ -30,14 +30,14 @@ export default function CoursesPage() {
   ]
 
   const popularFilters = [
-    { label: 'Débutant', count: 24, color: 'bg-green-100 text-green-700' },
-    { label: 'Concentration', count: 18, color: 'bg-purple-100 text-purple-700' },
-    { label: 'Détente', count: 32, color: 'bg-blue-100 text-blue-700' },
-    { label: 'Stress', count: 15, color: 'bg-red-100 text-red-700' },
-    { label: 'Sommeil', count: 12, color: 'bg-indigo-100 text-indigo-700' },
-    { label: 'Respiration', count: 9, color: 'bg-cyan-100 text-cyan-700' },
-    { label: 'Gratuit', count: 28, color: 'bg-green-100 text-green-700' },
-    { label: 'Premium', count: 16, color: 'bg-purple-100 text-purple-700' }
+    { label: 'Débutant', count: 24, color: 'var(--accent-green)' },
+    { label: 'Concentration', count: 18, color: 'var(--accent-mint)' },
+    { label: 'Détente', count: 32, color: 'var(--accent-cream)' },
+    { label: 'Stress', count: 15, color: 'var(--accent-sand)' },
+    { label: 'Sommeil', count: 12, color: 'var(--accent-beige)' },
+    { label: 'Respiration', count: 9, color: 'var(--accent-green-light)' },
+    { label: 'Gratuit', count: 28, color: 'var(--accent-taupe)' },
+    { label: 'Premium', count: 16, color: 'var(--accent-sand)' }
   ]
 
   const courses = [
@@ -135,14 +135,14 @@ export default function CoursesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: 'var(--gradient-light)' }}>
       {/* Top Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <nav className="sticky top-0 z-50" style={{ background: 'var(--card-bg-glass)', backdropFilter: 'blur(10px)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
-              <Heart className="w-6 h-6 text-purple-600" />
-              <Search className="w-6 h-6 text-gray-400" />
+              <Heart className="w-6 h-6" style={{ color: 'var(--text-accent)' }} />
+              <Search className="w-6 h-6" style={{ color: 'var(--text-secondary)' }} />
               <div className="w-6 h-6" />
             </div>
             
@@ -151,10 +151,11 @@ export default function CoursesPage() {
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" 
                 alt="Olivier"
                 className="w-8 h-8 rounded-full"
+                style={{ boxShadow: 'var(--shadow-image)' }}
               />
               <div className="text-sm">
-                <div className="font-medium text-gray-900">Bonjour, Olivier</div>
-                <div className="text-gray-500">Prêt pour votre séance ?</div>
+                <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Bonjour, Olivier</div>
+                <div style={{ color: 'var(--text-secondary)' }}>Prêt pour votre séance ?</div>
               </div>
             </div>
           </div>
@@ -164,20 +165,26 @@ export default function CoursesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Catalogue des Cours</h1>
-          <p className="text-gray-600 mb-6">6 cours disponibles</p>
+          <h1 className="text-hero-title mb-2" style={{ color: 'var(--text-primary)' }}>Catalogue des Cours</h1>
+          <p className="text-body mb-6" style={{ color: 'var(--text-secondary)' }}>6 cours disponibles</p>
           
           {/* Search and Filters */}
           <div className="flex flex-col lg:flex-row gap-4 mb-6">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
                 <input
                   type="text"
                   placeholder="Rechercher un cours, un instructeur, un tag..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 rounded-2xl focus:ring-2 focus:ring-opacity-50 transition-all"
+                  style={{ 
+                    background: 'var(--card-bg)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)',
+                    boxShadow: 'var(--shadow-card)'
+                  }}
                 />
               </div>
             </div>
@@ -186,7 +193,13 @@ export default function CoursesPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="px-4 py-3 rounded-2xl focus:ring-2 focus:ring-opacity-50 transition-all"
+                style={{ 
+                  background: 'var(--card-bg)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-primary)',
+                  boxShadow: 'var(--shadow-card)'
+                }}
               >
                 {categories.map((category) => (
                   <option key={category} value={category}>{category}</option>
@@ -196,7 +209,13 @@ export default function CoursesPage() {
               <select
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="px-4 py-3 rounded-2xl focus:ring-2 focus:ring-opacity-50 transition-all"
+                style={{ 
+                  background: 'var(--card-bg)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-primary)',
+                  boxShadow: 'var(--shadow-card)'
+                }}
               >
                 {levels.map((level) => (
                   <option key={level} value={level}>{level}</option>
@@ -205,13 +224,19 @@ export default function CoursesPage() {
               
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center space-x-2 px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50"
+                className="flex items-center space-x-2 px-4 py-3 rounded-2xl hover:opacity-80 transition-all"
+                style={{ 
+                  background: 'var(--card-bg)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-primary)',
+                  boxShadow: 'var(--shadow-card)'
+                }}
               >
                 <Filter className="w-5 h-5" />
                 <span>Filtres</span>
               </button>
               
-              <button className="flex items-center space-x-2 px-4 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700">
+              <button className="btn-primary flex items-center space-x-2">
                 <Plus className="w-5 h-5" />
                 <span>Créer un cours</span>
               </button>
@@ -223,13 +248,25 @@ export default function CoursesPage() {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg ${viewMode === 'grid' ? 'bg-purple-100 text-purple-600' : 'text-gray-400'}`}
+                className={`p-2 rounded-xl transition-all ${
+                  viewMode === 'grid' ? 'opacity-100' : 'opacity-50'
+                }`}
+                style={{ 
+                  background: viewMode === 'grid' ? 'var(--hover-bg)' : 'transparent',
+                  color: 'var(--text-primary)'
+                }}
               >
                 <Grid className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded-lg ${viewMode === 'list' ? 'bg-purple-100 text-purple-600' : 'text-gray-400'}`}
+                className={`p-2 rounded-xl transition-all ${
+                  viewMode === 'list' ? 'opacity-100' : 'opacity-50'
+                }`}
+                style={{ 
+                  background: viewMode === 'list' ? 'var(--hover-bg)' : 'transparent',
+                  color: 'var(--text-primary)'
+                }}
               >
                 <List className="w-5 h-5" />
               </button>
@@ -239,12 +276,16 @@ export default function CoursesPage() {
 
         {/* Popular Filters */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Filtres populaires</h3>
+          <h3 className="text-section-title mb-4" style={{ color: 'var(--text-primary)' }}>Filtres populaires</h3>
           <div className="flex flex-wrap gap-2">
             {popularFilters.map((filter, index) => (
               <button
                 key={index}
-                className={`px-4 py-2 rounded-full text-sm font-medium ${filter.color} hover:opacity-80`}
+                className="px-4 py-2 rounded-full text-sm font-medium hover:opacity-80 transition-all"
+                style={{ 
+                  background: filter.color,
+                  color: 'var(--text-primary)'
+                }}
               >
                 {filter.label} ({filter.count})
               </button>
@@ -255,10 +296,10 @@ export default function CoursesPage() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 text-center">
-              <stat.icon className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
+            <div key={index} className="card-nature text-center">
+              <stat.icon className="w-8 h-8 mx-auto mb-3" style={{ color: 'var(--text-accent)' }} />
+              <div className="text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{stat.value}</div>
+              <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{stat.label}</div>
             </div>
           ))}
         </div>
@@ -266,57 +307,59 @@ export default function CoursesPage() {
         {/* Courses Grid/List */}
         <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
           {courses.map((course) => (
-            <div key={course.id} className={`bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow ${viewMode === 'list' ? 'flex' : ''}`}>
+            <div key={course.id} className={`card-nature overflow-hidden hover:shadow-medium transition-all ${viewMode === 'list' ? 'flex' : ''}`}>
               {viewMode === 'grid' ? (
                 <>
-                  <div className="h-48">
+                  <div className="h-48 rounded-3xl overflow-hidden mb-6" style={{ boxShadow: 'var(--shadow-image)' }}>
                     <img 
                       src={course.image} 
                       alt={course.title}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="px-6 pb-6">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-2">
                         {course.tags.slice(0, 3).map((tag, index) => (
                           <span 
                             key={index}
-                            className={`px-3 py-1 rounded-full text-xs font-medium ${
-                              tag === 'Débutant' ? 'bg-green-100 text-green-700' :
-                              tag === 'Concentration' ? 'bg-purple-100 text-purple-700' :
-                              tag === 'Détente' ? 'bg-blue-100 text-blue-700' :
-                              tag === 'Stress' ? 'bg-red-100 text-red-700' :
-                              tag === 'Anxiété' ? 'bg-orange-100 text-orange-700' :
-                              tag === 'Sommeil' ? 'bg-indigo-100 text-indigo-700' :
-                              tag === 'Respiration' ? 'bg-cyan-100 text-cyan-700' :
-                              tag === 'Avancé' ? 'bg-purple-100 text-purple-700' :
-                              tag === 'Intermédiaire' ? 'bg-blue-100 text-blue-700' :
-                              tag === 'Mouvement' ? 'bg-pink-100 text-pink-700' :
-                              tag === 'Premium' ? 'bg-purple-100 text-purple-700' :
-                              'bg-gray-100 text-gray-700'
-                            }`}
+                            className="px-3 py-1 rounded-full text-xs font-medium"
+                            style={{ 
+                              background: tag === 'Débutant' ? 'var(--accent-green)' :
+                              tag === 'Concentration' ? 'var(--accent-mint)' :
+                              tag === 'Détente' ? 'var(--accent-cream)' :
+                              tag === 'Stress' ? 'var(--accent-sand)' :
+                              tag === 'Anxiété' ? 'var(--accent-taupe)' :
+                              tag === 'Sommeil' ? 'var(--accent-beige)' :
+                              tag === 'Respiration' ? 'var(--accent-green-light)' :
+                              tag === 'Avancé' ? 'var(--accent-mint)' :
+                              tag === 'Intermédiaire' ? 'var(--accent-cream)' :
+                              tag === 'Mouvement' ? 'var(--accent-sand)' :
+                              tag === 'Premium' ? 'var(--accent-taupe)' :
+                              'var(--accent-cream)',
+                              color: 'var(--text-primary)'
+                            }}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
                       {course.isPremium && (
-                        <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
+                        <span className="px-2 py-1 rounded-full text-xs font-medium" style={{ background: 'var(--accent-sand)', color: 'var(--text-primary)' }}>
                           Premium
                         </span>
                       )}
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{course.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{course.description}</p>
+                    <h3 className="text-card-title mb-2" style={{ color: 'var(--text-primary)' }}>{course.title}</h3>
+                    <p className="text-body mb-4 line-clamp-2" style={{ color: 'var(--text-secondary)' }}>{course.description}</p>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <div className="flex items-center space-x-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
                         <div className="flex items-center space-x-1">
                           <Users className="w-4 h-4" />
                           <span>{course.students.toLocaleString()}</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <Star className="w-4 h-4 text-yellow-400" />
+                          <Star className="w-4 h-4 text-yellow-500" />
                           <span>{course.rating}</span>
                         </div>
                         <div className="flex items-center space-x-1">
@@ -325,14 +368,14 @@ export default function CoursesPage() {
                         </div>
                       </div>
                     </div>
-                    <button className="w-full btn-primary">
+                    <button className="w-full btn-accent">
                       Voir le cours →
                     </button>
                   </div>
                 </>
               ) : (
                 <div className="flex w-full">
-                  <div className="w-48 h-32 flex-shrink-0">
+                  <div className="w-48 h-32 flex-shrink-0 rounded-2xl overflow-hidden" style={{ boxShadow: 'var(--shadow-image)' }}>
                     <img 
                       src={course.image} 
                       alt={course.title}
@@ -341,21 +384,21 @@ export default function CoursesPage() {
                   </div>
                   <div className="flex-1 p-6">
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-gray-900">{course.title}</h3>
+                      <h3 className="text-card-title" style={{ color: 'var(--text-primary)' }}>{course.title}</h3>
                       {course.isPremium && (
-                        <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
+                        <span className="px-2 py-1 rounded-full text-xs font-medium" style={{ background: 'var(--accent-sand)', color: 'var(--text-primary)' }}>
                           Premium
                         </span>
                       )}
                     </div>
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">{course.description}</p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                    <p className="text-body mb-3 line-clamp-2" style={{ color: 'var(--text-secondary)' }}>{course.description}</p>
+                    <div className="flex items-center space-x-4 text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>
                       <div className="flex items-center space-x-1">
                         <Users className="w-4 h-4" />
                         <span>{course.students.toLocaleString()}</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 text-yellow-400" />
+                        <Star className="w-4 h-4 text-yellow-500" />
                         <span>{course.rating}</span>
                       </div>
                       <div className="flex items-center space-x-1">
@@ -368,26 +411,28 @@ export default function CoursesPage() {
                         {course.tags.slice(0, 3).map((tag, index) => (
                           <span 
                             key={index}
-                            className={`px-3 py-1 rounded-full text-xs font-medium ${
-                              tag === 'Débutant' ? 'bg-green-100 text-green-700' :
-                              tag === 'Concentration' ? 'bg-purple-100 text-purple-700' :
-                              tag === 'Détente' ? 'bg-blue-100 text-blue-700' :
-                              tag === 'Stress' ? 'bg-red-100 text-red-700' :
-                              tag === 'Anxiété' ? 'bg-orange-100 text-orange-700' :
-                              tag === 'Sommeil' ? 'bg-indigo-100 text-indigo-700' :
-                              tag === 'Respiration' ? 'bg-cyan-100 text-cyan-700' :
-                              tag === 'Avancé' ? 'bg-purple-100 text-purple-700' :
-                              tag === 'Intermédiaire' ? 'bg-blue-100 text-blue-700' :
-                              tag === 'Mouvement' ? 'bg-pink-100 text-pink-700' :
-                              tag === 'Premium' ? 'bg-purple-100 text-purple-700' :
-                              'bg-gray-100 text-gray-700'
-                            }`}
+                            className="px-3 py-1 rounded-full text-xs font-medium"
+                            style={{ 
+                              background: tag === 'Débutant' ? 'var(--accent-green)' :
+                              tag === 'Concentration' ? 'var(--accent-mint)' :
+                              tag === 'Détente' ? 'var(--accent-cream)' :
+                              tag === 'Stress' ? 'var(--accent-sand)' :
+                              tag === 'Anxiété' ? 'var(--accent-taupe)' :
+                              tag === 'Sommeil' ? 'var(--accent-beige)' :
+                              tag === 'Respiration' ? 'var(--accent-green-light)' :
+                              tag === 'Avancé' ? 'var(--accent-mint)' :
+                              tag === 'Intermédiaire' ? 'var(--accent-cream)' :
+                              tag === 'Mouvement' ? 'var(--accent-sand)' :
+                              tag === 'Premium' ? 'var(--accent-taupe)' :
+                              'var(--accent-cream)',
+                              color: 'var(--text-primary)'
+                            }}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <button className="btn-primary">
+                      <button className="btn-accent">
                         Voir le cours →
                       </button>
                     </div>

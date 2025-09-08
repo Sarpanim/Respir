@@ -38,7 +38,7 @@ export default function ProfilePage() {
       icon: Target,
       label: "Temps médité",
       value: user.totalMeditationTime,
-      color: "text-blue-500",
+      color: "text-amber-600",
       trend: "up",
       trendValue: "+2h"
     },
@@ -46,7 +46,7 @@ export default function ProfilePage() {
       icon: BookOpen,
       label: "Cours terminés",
       value: `${user.coursesCompleted}`,
-      color: "text-green-500",
+      color: "text-green-600",
       trend: "up",
       trendValue: "+1"
     },
@@ -54,7 +54,7 @@ export default function ProfilePage() {
       icon: Play,
       label: "Méditations",
       value: `${user.meditationsCompleted}`,
-      color: "text-purple-500",
+      color: "text-emerald-600",
       trend: "up",
       trendValue: "+3"
     }
@@ -87,7 +87,7 @@ export default function ProfilePage() {
       icon: BookOpen,
       isUnlocked: true,
       unlockedDate: "28 Jan 2024",
-      color: "blue"
+      color: "green"
     },
     {
       id: 4,
@@ -105,7 +105,7 @@ export default function ProfilePage() {
       icon: Calendar,
       isUnlocked: false,
       progress: 23,
-      color: "green"
+      color: "emerald"
     }
   ]
 
@@ -147,20 +147,20 @@ export default function ProfilePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: 'var(--gradient-light)' }}>
       {/* Top Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <nav className="sticky top-0 z-50" style={{ background: 'var(--card-bg-glass)', backdropFilter: 'blur(10px)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
-              <Heart className="w-6 h-6 text-purple-600" />
-              <Search className="w-6 h-6 text-gray-400" />
+              <Heart className="w-6 h-6" style={{ color: 'var(--text-accent)' }} />
+              <Search className="w-6 h-6" style={{ color: 'var(--text-secondary)' }} />
               <div className="w-6 h-6" />
             </div>
             
             <div className="flex items-center space-x-4">
-              <Bell className="w-6 h-6 text-gray-400" />
-              <Settings className="w-6 h-6 text-gray-400" />
+              <Bell className="w-6 h-6" style={{ color: 'var(--text-secondary)' }} />
+              <Settings className="w-6 h-6" style={{ color: 'var(--text-secondary)' }} />
             </div>
           </div>
         </div>
@@ -168,99 +168,103 @@ export default function ProfilePage() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Profile Header */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
+        <div className="card-nature-elevated mb-8">
           <div className="text-center">
             {/* Avatar */}
             <div className="relative inline-block mb-6">
               <img 
                 src={user.avatar} 
                 alt={user.name}
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
+                className="w-24 h-24 rounded-full object-cover"
+                style={{ boxShadow: 'var(--shadow-image)' }}
               />
-              <button className="absolute bottom-0 right-0 bg-purple-600 rounded-full p-2 hover:bg-purple-700 transition-colors">
-                <Camera className="w-4 h-4 text-white" />
+              <button className="absolute bottom-0 right-0 rounded-full p-2 hover:opacity-80 transition-all" style={{ background: 'var(--accent-beige)' }}>
+                <Camera className="w-4 h-4" style={{ color: 'var(--text-primary)' }} />
               </button>
             </div>
 
             {/* User Info */}
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">{user.name}</h1>
-            <p className="text-gray-600 mb-4">{user.email}</p>
+            <h1 className="text-hero-title mb-2" style={{ color: 'var(--text-primary)' }}>{user.name}</h1>
+            <p className="text-body mb-4" style={{ color: 'var(--text-secondary)' }}>{user.email}</p>
             
             {/* Level Badge */}
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded-full mb-4">
-              <Award className="w-4 h-4 text-white" />
-              <span className="text-white font-medium">{user.level}</span>
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full mb-4" style={{ background: 'var(--gradient-accent)' }}>
+              <Award className="w-4 h-4" style={{ color: 'var(--text-primary)' }} />
+              <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{user.level}</span>
             </div>
 
             {/* Join Date */}
-            <p className="text-gray-500 text-sm">Membre depuis {user.joinDate}</p>
+            <p className="text-caption" style={{ color: 'var(--text-secondary)' }}>Membre depuis {user.joinDate}</p>
           </div>
         </div>
 
         {/* Statistics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 text-center">
+            <div key={index} className="card-nature text-center">
               <stat.icon className={`w-8 h-8 mx-auto mb-3 ${stat.color}`} />
-              <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-600 mb-1">{stat.label}</div>
-              <div className="text-xs text-green-500">{stat.trendValue}</div>
+              <div className="text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{stat.value}</div>
+              <div className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>{stat.label}</div>
+              <div className="text-xs text-green-600">{stat.trendValue}</div>
             </div>
           ))}
         </div>
 
         {/* Achievements */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-6">Achievements</h2>
+        <div className="card-nature-elevated mb-8">
+          <h2 className="text-section-title mb-6" style={{ color: 'var(--text-primary)' }}>Achievements</h2>
           <div className="space-y-4">
             {achievements.map((achievement) => (
-              <div key={achievement.id} className={`flex items-center space-x-4 p-4 rounded-xl ${
-                achievement.isUnlocked ? 'bg-gray-50' : 'bg-gray-100'
-              }`}>
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+              <div key={achievement.id} className={`flex items-center space-x-4 p-4 rounded-2xl transition-all ${
+                achievement.isUnlocked ? 'opacity-100' : 'opacity-60'
+              }`} style={{ background: achievement.isUnlocked ? 'var(--hover-bg-light)' : 'var(--hover-bg)' }}>
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
                   achievement.isUnlocked 
-                    ? `bg-gradient-to-r ${
-                        achievement.color === 'yellow' ? 'from-yellow-500 to-orange-500' :
-                        achievement.color === 'orange' ? 'from-orange-500 to-red-500' :
-                        achievement.color === 'blue' ? 'from-blue-500 to-purple-500' :
-                        achievement.color === 'purple' ? 'from-purple-500 to-pink-500' :
-                        'from-green-500 to-teal-500'
+                    ? `${
+                        achievement.color === 'yellow' ? 'var(--accent-cream)' :
+                        achievement.color === 'orange' ? 'var(--accent-sand)' :
+                        achievement.color === 'green' ? 'var(--accent-green)' :
+                        achievement.color === 'purple' ? 'var(--accent-mint)' :
+                        'var(--accent-green-light)'
                       }`
-                    : 'bg-gray-300'
+                    : 'var(--hover-bg)'
                 }`}>
                   <achievement.icon className={`w-6 h-6 ${
-                    achievement.isUnlocked ? 'text-white' : 'text-gray-500'
-                  }`} />
+                    achievement.isUnlocked ? 'opacity-100' : 'opacity-50'
+                  }`} style={{ color: 'var(--text-primary)' }} />
                 </div>
                 <div className="flex-1">
                   <h3 className={`font-semibold ${
-                    achievement.isUnlocked ? 'text-gray-900' : 'text-gray-500'
-                  }`}>
+                    achievement.isUnlocked ? 'opacity-100' : 'opacity-60'
+                  }`} style={{ color: 'var(--text-primary)' }}>
                     {achievement.title}
                   </h3>
                   <p className={`text-sm ${
-                    achievement.isUnlocked ? 'text-gray-600' : 'text-gray-400'
-                  }`}>
+                    achievement.isUnlocked ? 'opacity-80' : 'opacity-50'
+                  }`} style={{ color: 'var(--text-secondary)' }}>
                     {achievement.description}
                   </p>
                   {achievement.isUnlocked ? (
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
                       Débloqué le {achievement.unlockedDate}
                     </p>
                   ) : (
                     <div className="mt-2">
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full rounded-full h-2" style={{ background: 'var(--hover-bg)' }}>
                         <div 
-                          className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${achievement.progress}%` }}
+                          className="h-2 rounded-full transition-all duration-300"
+                          style={{ 
+                            width: `${achievement.progress}%`,
+                            background: 'var(--gradient-accent)'
+                          }}
                         ></div>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">{achievement.progress}%</p>
+                      <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>{achievement.progress}%</p>
                     </div>
                   )}
                 </div>
                 {achievement.isUnlocked && (
-                  <CheckCircle className="w-6 h-6 text-green-500" />
+                  <CheckCircle className="w-6 h-6 text-green-600" />
                 )}
               </div>
             ))}
@@ -268,22 +272,25 @@ export default function ProfilePage() {
         </div>
 
         {/* Recent Courses */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-6">Cours récents</h2>
+        <div className="card-nature-elevated mb-8">
+          <h2 className="text-section-title mb-6" style={{ color: 'var(--text-primary)' }}>Cours récents</h2>
           <div className="space-y-4">
             {recentCourses.map((course) => (
-              <div key={course.id} className="flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 transition-colors">
+              <div key={course.id} className="flex items-center justify-between p-4 rounded-2xl hover:opacity-80 transition-all" style={{ background: 'var(--hover-bg-light)' }}>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900">{course.title}</h3>
-                  <p className="text-gray-600 text-sm">{course.category} • {course.duration}</p>
-                  <p className="text-gray-500 text-xs">{course.completedAt}</p>
+                  <h3 className="font-semibold" style={{ color: 'var(--text-primary)' }}>{course.title}</h3>
+                  <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{course.category} • {course.duration}</p>
+                  <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{course.completedAt}</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-gray-900 font-semibold">{course.progress}%</div>
-                  <div className="w-16 bg-gray-200 rounded-full h-2 mt-1">
+                  <div className="font-semibold" style={{ color: 'var(--text-primary)' }}>{course.progress}%</div>
+                  <div className="w-16 rounded-full h-2 mt-1" style={{ background: 'var(--hover-bg)' }}>
                     <div 
-                      className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
-                      style={{ width: `${course.progress}%` }}
+                      className="h-2 rounded-full transition-all duration-300"
+                      style={{ 
+                        width: `${course.progress}%`,
+                        background: 'var(--gradient-accent)'
+                      }}
                     ></div>
                   </div>
                 </div>
@@ -293,31 +300,31 @@ export default function ProfilePage() {
         </div>
 
         {/* Menu Options */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="card-nature-elevated overflow-hidden">
           {menuOptions.map((option, index) => (
             <button
               key={option.id}
-              className={`w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors ${
-                index !== menuOptions.length - 1 ? 'border-b border-gray-200' : ''
+              className={`w-full flex items-center justify-between p-4 hover:opacity-80 transition-all ${
+                index !== menuOptions.length - 1 ? 'border-b' : ''
               }`}
+              style={{ 
+                borderColor: 'var(--border-light)',
+                color: option.isDestructive ? 'var(--text-error)' : 'var(--text-primary)'
+              }}
             >
               <div className="flex items-center space-x-3">
-                <option.icon className={`w-5 h-5 ${
-                  option.isDestructive ? 'text-red-500' : 'text-gray-600'
-                }`} />
-                <span className={`font-medium ${
-                  option.isDestructive ? 'text-red-500' : 'text-gray-900'
-                }`}>
+                <option.icon className="w-5 h-5" style={{ color: option.isDestructive ? 'var(--text-error)' : 'var(--text-accent)' }} />
+                <span className="font-medium">
                   {option.label}
                 </span>
               </div>
               <div className="flex items-center space-x-2">
                 {option.hasBadge && (
-                  <div className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <div className="text-xs rounded-full w-5 h-5 flex items-center justify-center" style={{ background: 'var(--text-error)', color: 'white' }}>
                     3
                   </div>
                 )}
-                <ChevronRight className="w-5 h-5 text-gray-400" />
+                <ChevronRight className="w-5 h-5" style={{ color: 'var(--text-secondary)' }} />
               </div>
             </button>
           ))}
